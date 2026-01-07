@@ -631,9 +631,11 @@ function renderScheduleTab() {
     `;
   }
 
-  // Ordenar por data de entrada (checkIn)
+  // Ordenar por data de entrada (checkIn) - crescente
   const sortedBookings = [...state.bookings].sort((a, b) => {
-    return new Date(a.checkIn) - new Date(b.checkIn);
+    const dateA = new Date(a.checkIn);
+    const dateB = new Date(b.checkIn);
+    return dateA - dateB;
   });
 
   return `
