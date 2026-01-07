@@ -4,42 +4,360 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Sítio Escola de Cura - Hospedagens</title>
-
 <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
-
-<!-- Firebase (compat para NÃO quebrar nada) -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <style>
-/* ===== CSS ORIGINAL (SEM ALTERAÇÕES) ===== */
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;
-background:linear-gradient(to bottom right,#1a1a1a,#0d0d0d);
-min-height:100vh;padding:24px;color:#e5e7eb
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.container{max-width:1280px;margin:0 auto}
-.card{background:#1f2937;border-radius:12px;box-shadow:0 20px 25px -5px rgba(0,0,0,.5);padding:24px}
-.title{font-size:30px;font-weight:bold;color:#34d399;margin-bottom:24px;text-align:center}
-.tabs{display:flex;gap:8px;border-bottom:1px solid #374151;margin-bottom:24px}
-.tab{display:flex;align-items:center;gap:8px;padding:8px 16px;background:none;border:none;cursor:pointer;color:#9ca3af;border-bottom:2px solid transparent}
-.tab.active{color:#34d399;border-bottom-color:#34d399}
-.form-container{background:#374151;border-radius:8px;padding:16px;margin-bottom:24px}
-.form-grid{display:grid;grid-template-columns:1fr;gap:12px}
-@media(min-width:768px){.form-grid{grid-template-columns:repeat(5,1fr)}}
-.input{padding:8px 12px;background:#4b5563;color:#fff;border:1px solid #6b7280;border-radius:8px}
-.btn{display:flex;gap:8px;align-items:center;padding:8px 24px;background:#059669;color:#fff;border:none;border-radius:8px;cursor:pointer}
-.table-container{overflow-x:auto}
-table{width:100%;border-collapse:collapse}
-th,td{padding:12px 8px;font-size:14px}
-th{color:#34d399;font-size:12px;text-transform:uppercase}
-tbody tr{border-bottom:1px solid #374151}
-.text-green{color:#34d399}
-.text-orange{color:#fb923c}
-.actions{display:flex;gap:8px;justify-content:center}
-.icon-btn{background:none;border:none;cursor:pointer}
-.empty-state{text-align:center;padding:32px;color:#9ca3af}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(to bottom right, #1a1a1a, #0d0d0d);
+    min-height: 100vh;
+    padding: 12px;
+    color: #e5e7eb;
+}
+
+@media (min-width: 768px) {
+    body {
+        padding: 24px;
+    }
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #1f2937;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+    .card {
+        padding: 24px;
+    }
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #34d399;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 30px;
+        margin-bottom: 24px;
+    }
+}
+
+.tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid #374151;
+    margin-bottom: 24px;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #9ca3af;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+}
+
+.tab:hover {
+    color: #d1d5db;
+}
+
+.tab.active {
+    color: #34d399;
+    border-bottom-color: #34d399;
+}
+
+.form-container {
+    background-color: #374151;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.form-title {
+    font-weight: 600;
+    color: #34d399;
+    margin-bottom: 12px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+@media (min-width: 768px) {
+    .form-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.input {
+    padding: 10px 12px;
+    background-color: #4b5563;
+    color: white;
+    border: 1px solid #6b7280;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.input:focus {
+    outline: none;
+    border-color: #34d399;
+    box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.2);
+}
+
+.input::placeholder {
+    color: #9ca3af;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 24px;
+    background-color: #059669;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #047857;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead tr {
+    border-bottom: 2px solid #374151;
+}
+
+th {
+    text-align: left;
+    padding: 12px 8px;
+    font-weight: 600;
+    color: #34d399;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+tbody tr {
+    border-bottom: 1px solid #374151;
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: #374151;
+}
+
+td {
+    padding: 12px 8px;
+    font-size: 14px;
+}
+
+.text-gray-100 {
+    color: #f3f4f6;
+}
+
+.text-gray-300 {
+    color: #d1d5db;
+}
+
+.text-gray-400 {
+    color: #9ca3af;
+}
+
+.text-green {
+    color: #34d399;
+    font-weight: 500;
+}
+
+.text-orange {
+    color: #fb923c;
+    font-weight: 500;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.icon-btn.blue {
+    color: #60a5fa;
+}
+
+.icon-btn.blue:hover {
+    color: #93c5fd;
+}
+
+.icon-btn.red {
+    color: #f87171;
+}
+
+.icon-btn.red:hover {
+    color: #fca5a5;
+}
+
+.icon-btn.green {
+    color: #34d399;
+}
+
+.icon-btn.green:hover {
+    color: #6ee7b7;
+}
+
+.icon-btn.gray {
+    color: #9ca3af;
+}
+
+.icon-btn.gray:hover {
+    color: #d1d5db;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 32px;
+    color: #9ca3af;
+}
+
+.schedule-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.schedule-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #34d399;
+    margin-bottom: 16px;
+}
+
+.schedule-card {
+    background-color: #374151;
+    border-radius: 8px;
+    padding: 16px;
+    border-left: 4px solid #34d399;
+}
+
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.schedule-content {
+    flex: 1;
+    min-width: 250px;
+}
+
+.schedule-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    .schedule-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.schedule-note {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #9ca3af;
+    font-style: italic;
+}
+
+.schedule-price {
+    text-align: right;
+    margin-left: 16px;
+}
+
+.schedule-price-label {
+    font-size: 14px;
+    color: #9ca3af;
+}
+
+.schedule-price-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #34d399;
+}
+
+.schedule-pending {
+    font-size: 12px;
+    color: #fb923c;
+    margin-top: 4px;
+}
+
+.empty-schedule {
+    text-align: center;
+    padding: 48px;
+    color: #9ca3af;
+}
+
+.hidden {
+    display: none;
+}
 </style>
 </head>
 
@@ -47,7 +365,7 @@ tbody tr{border-bottom:1px solid #374151}
 <div id="root"></div>
 
 <script>
-/* ===== FIREBASE ===== */
+// Firebase
 firebase.initializeApp({
   apiKey: "AIzaSyDIQw3v9C7FnRNf8_uuiqbx2NLvVErNke0",
   authDomain: "sitio-escola-de-cura.firebaseapp.com",
@@ -55,124 +373,288 @@ firebase.initializeApp({
 });
 const db = firebase.firestore();
 
-/* ===== ESTADO ORIGINAL ===== */
-let state={
-  activeTab:'bookings',
-  bookings:[],
-  editingId:null,
-  newBooking:{name:'',checkIn:'',checkOut:'',total:'',paid:'',note:''}
+// Estado
+let state = {
+  activeTab: 'bookings',
+  bookings: [],
+  editingId: null,
+  newBooking: {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: ''}
 };
 
-/* ===== FIRESTORE ===== */
-async function loadBookings(){
+// Firestore
+async function loadBookings() {
   const snap = await db.collection("bookings").orderBy("checkIn").get();
-  state.bookings = snap.docs.map(d=>d.data());
+  state.bookings = snap.docs.map(d => d.data());
   render();
 }
 
-async function handleAdd(){
-  const b=state.newBooking;
-  if(!b.name||!b.checkIn||!b.checkOut){alert('Preencha nome e datas');return}
+async function handleAdd() {
+  const b = state.newBooking;
+  if (!b.name || !b.checkIn || !b.checkOut) {
+    alert('Preencha nome e datas');
+    return;
+  }
 
-  const booking={
-    id:'booking_'+Date.now(),
-    name:b.name,
-    checkIn:b.checkIn,
-    checkOut:b.checkOut,
-    total:+b.total||0,
-    paid:+b.paid||0,
-    pending:(+b.total||0)-(+b.paid||0),
-    note:b.note||''
+  const booking = {
+    id: 'booking_' + Date.now(),
+    name: b.name,
+    checkIn: b.checkIn,
+    checkOut: b.checkOut,
+    total: +b.total || 0,
+    paid: +b.paid || 0,
+    pending: (+b.total || 0) - (+b.paid || 0),
+    note: b.note || ''
   };
 
   await db.collection("bookings").doc(booking.id).set(booking);
-  state.newBooking={name:'',checkIn:'',checkOut:'',total:'',paid:'',note:''};
+  state.newBooking = {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: ''};
   loadBookings();
 }
 
-async function handleDelete(id){
-  if(confirm('Excluir esta reserva?')){
+async function handleDelete(id) {
+  if (confirm('Excluir esta reserva?')) {
     await db.collection("bookings").doc(id).delete();
     loadBookings();
   }
 }
 
-function handleEdit(id){state.editingId=id;render()}
-function handleCancelEdit(){state.editingId=null;render()}
+function handleEdit(id) {
+  state.editingId = id;
+  render();
+}
 
-async function handleSaveEdit(id){
-  const b=state.bookings.find(x=>x.id===id);
-  b.pending=b.total-b.paid;
-  await db.collection("bookings").doc(id).set(b);
-  state.editingId=null;
+function handleCancelEdit() {
+  state.editingId = null;
   loadBookings();
 }
 
-/* ===== HELPERS ===== */
-function changeTab(t){state.activeTab=t;render()}
-function updateNewBooking(f,v){state.newBooking[f]=v}
-function updateBooking(id,f,v){
-  const b=state.bookings.find(x=>x.id===id);
-  b[f]=isNaN(v)?v:+v||0
-}
-function fmt(v){return`R$ ${v.toFixed(2)}`}
-function fmtDate(d){return new Date(d+'T00:00:00').toLocaleDateString('pt-BR')}
-
-/* ===== RENDER BOOKINGS ===== */
-function renderBookingsTab(){
-return `
-<div class="form-container">
-<h2 style="color:#34d399;margin-bottom:12px">Nova Reserva</h2>
-<div class="form-grid">
-<input class="input" placeholder="Nome" onchange="updateNewBooking('name',this.value)">
-<input class="input" type="date" onchange="updateNewBooking('checkIn',this.value)">
-<input class="input" type="date" onchange="updateNewBooking('checkOut',this.value)">
-<input class="input" placeholder="Valor total" onchange="updateNewBooking('total',this.value)">
-<input class="input" placeholder="Valor pago" onchange="updateNewBooking('paid',this.value)">
-</div>
-<button class="btn" onclick="handleAdd()"><i data-lucide="plus"></i>Adicionar</button>
-</div>
-
-<div class="table-container">
-<table>
-<thead><tr>
-<th>Nome</th><th>Entrada</th><th>Saída</th><th>Total</th><th>Pago</th><th>Pendente</th><th>Ações</th>
-</tr></thead>
-<tbody>
-${state.bookings.length?state.bookings.map(b=>`
-<tr>
-<td>${b.name}</td>
-<td>${fmtDate(b.checkIn)}</td>
-<td>${fmtDate(b.checkOut)}</td>
-<td>${fmt(b.total)}</td>
-<td class="text-green">${fmt(b.paid)}</td>
-<td class="${b.pending>0?'text-orange':'text-green'}">${fmt(b.pending)}</td>
-<td class="actions">
-<button class="icon-btn" onclick="handleDelete('${b.id}')"><i data-lucide="trash-2"></i></button>
-</td>
-</tr>`).join(''):`<tr><td colspan="7" class="empty-state">Nenhuma reserva</td></tr>`}
-</tbody>
-</table>
-</div>`
+async function handleSaveEdit(id) {
+  const b = state.bookings.find(x => x.id === id);
+  b.pending = b.total - b.paid;
+  await db.collection("bookings").doc(id).set(b);
+  state.editingId = null;
+  loadBookings();
 }
 
-/* ===== RENDER ===== */
-function render(){
-document.getElementById('root').innerHTML=`
-<div class="container">
-<div class="card">
-<h1 class="title">Sítio Escola de Cura</h1>
-<div class="tabs">
-<button class="tab ${state.activeTab==='bookings'?'active':''}" onclick="changeTab('bookings')"><i data-lucide="plus"></i>Hospedagens</button>
-<button class="tab ${state.activeTab==='schedule'?'active':''}" onclick="changeTab('schedule')"><i data-lucide="calendar"></i>Agendamentos</button>
-</div>
-${renderBookingsTab()}
-</div>
-</div>`;
-lucide.createIcons();
+// Helpers
+function changeTab(t) {
+  state.activeTab = t;
+  render();
 }
 
-document.addEventListener('DOMContentLoaded',loadBookings);
+function updateNewBooking(f, v) {
+  state.newBooking[f] = v;
+}
+
+function updateBooking(id, f, v) {
+  const b = state.bookings.find(x => x.id === id);
+  if (f === 'name' || f === 'note' || f === 'checkIn' || f === 'checkOut') {
+    b[f] = v;
+  } else {
+    b[f] = +v || 0;
+  }
+}
+
+function fmt(v) {
+  return `R$ ${v.toFixed(2)}`;
+}
+
+function fmtDate(d) {
+  return new Date(d + 'T00:00:00').toLocaleDateString('pt-BR');
+}
+
+// Render Bookings
+function renderBookingsTab() {
+  return `
+    <div class="form-container">
+      <h2 class="form-title">Nova Reserva</h2>
+      <div class="form-grid">
+        <input type="text" class="input" placeholder="Nome" value="${state.newBooking.name}" onchange="updateNewBooking('name', this.value)" />
+        <input type="date" class="input" value="${state.newBooking.checkIn}" onchange="updateNewBooking('checkIn', this.value)" />
+        <input type="date" class="input" value="${state.newBooking.checkOut}" onchange="updateNewBooking('checkOut', this.value)" />
+        <input type="number" class="input" placeholder="Valor total" value="${state.newBooking.total}" onchange="updateNewBooking('total', this.value)" />
+        <input type="number" class="input" placeholder="Valor pago" value="${state.newBooking.paid}" onchange="updateNewBooking('paid', this.value)" />
+      </div>
+      <input type="text" class="input" style="width: 100%; margin-bottom: 12px;" placeholder="Anotações (opcional)" value="${state.newBooking.note}" onchange="updateNewBooking('note', this.value)" />
+      <button class="btn" onclick="handleAdd()">
+        <i data-lucide="plus"></i>
+        Adicionar
+      </button>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Entrada</th>
+            <th>Saída</th>
+            <th>Total</th>
+            <th>Pago</th>
+            <th>Pendente</th>
+            <th>Anotações</th>
+            <th style="text-align: center;">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${state.bookings.length === 0 ? `
+            <tr>
+              <td colspan="8" class="empty-state">Nenhuma reserva cadastrada</td>
+            </tr>
+          ` : state.bookings.map(booking => `
+            <tr>
+              <td>
+                ${state.editingId === booking.id ? `
+                  <input type="text" class="input" value="${booking.name}" onchange="updateBooking('${booking.id}', 'name', this.value)" />
+                ` : `
+                  <span class="text-gray-100" style="font-weight: 500;">${booking.name}</span>
+                `}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="date" class="input" value="${booking.checkIn}" onchange="updateBooking('${booking.id}', 'checkIn', this.value)" />
+                ` : fmtDate(booking.checkIn)}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="date" class="input" value="${booking.checkOut}" onchange="updateBooking('${booking.id}', 'checkOut', this.value)" />
+                ` : fmtDate(booking.checkOut)}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="number" class="input" style="width: 80px;" value="${booking.total}" onchange="updateBooking('${booking.id}', 'total', this.value)" />
+                ` : fmt(booking.total)}
+              </td>
+              <td class="text-green">
+                ${state.editingId === booking.id ? `
+                  <input type="number" class="input" style="width: 80px;" value="${booking.paid}" onchange="updateBooking('${booking.id}', 'paid', this.value)" />
+                ` : fmt(booking.paid)}
+              </td>
+              <td>
+                <span class="${booking.pending > 0 ? 'text-orange' : 'text-green'}">
+                  ${fmt(booking.pending)}
+                </span>
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="text" class="input" placeholder="Anotação" value="${booking.note || ''}" onchange="updateBooking('${booking.id}', 'note', this.value)" />
+                ` : `<span class="text-gray-400">${booking.note || '-'}</span>`}
+              </td>
+              <td>
+                <div class="actions">
+                  ${state.editingId === booking.id ? `
+                    <button class="icon-btn green" onclick="handleSaveEdit('${booking.id}')" title="Salvar">
+                      <i data-lucide="check"></i>
+                    </button>
+                    <button class="icon-btn gray" onclick="handleCancelEdit()" title="Cancelar">
+                      <i data-lucide="x"></i>
+                    </button>
+                  ` : `
+                    <button class="icon-btn blue" onclick="handleEdit('${booking.id}')" title="Editar">
+                      <i data-lucide="edit-2"></i>
+                    </button>
+                    <button class="icon-btn red" onclick="handleDelete('${booking.id}')" title="Excluir">
+                      <i data-lucide="trash-2"></i>
+                    </button>
+                  `}
+                </div>
+              </td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+// Render Schedule
+function renderScheduleTab() {
+  if (state.bookings.length === 0) {
+    return `
+      <div class="empty-schedule">
+        <i data-lucide="calendar" style="width: 64px; height: 64px; opacity: 0.5;"></i>
+        <p>Nenhum agendamento cadastrado ainda</p>
+      </div>
+    `;
+  }
+
+  return `
+    <h2 class="schedule-title">Calendário de Agendamentos</h2>
+    <div class="schedule-container">
+      ${state.bookings.map(booking => {
+        const checkIn = new Date(booking.checkIn + 'T00:00:00');
+        const checkOut = new Date(booking.checkOut + 'T00:00:00');
+        const days = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+        
+        return `
+          <div class="schedule-card">
+            <div class="schedule-header">
+              <div class="schedule-content">
+                <h3 class="schedule-name">${booking.name}</h3>
+                <div class="schedule-grid">
+                  <div class="text-gray-300">
+                    <span class="text-gray-400">Entrada:</span> ${fmtDate(booking.checkIn)}
+                  </div>
+                  <div class="text-gray-300">
+                    <span class="text-gray-400">Saída:</span> ${fmtDate(booking.checkOut)}
+                  </div>
+                  <div class="text-gray-300">
+                    <span class="text-gray-400">Período:</span> ${days} ${days === 1 ? 'dia' : 'dias'}
+                  </div>
+                  <div class="text-gray-300">
+                    <span class="text-gray-400">Status Pgto:</span> 
+                    <span class="${booking.pending > 0 ? 'text-orange' : 'text-green'}">
+                      ${booking.pending > 0 ? 'Pendente' : 'Pago'}
+                    </span>
+                  </div>
+                </div>
+                ${booking.note ? `
+                  <div class="schedule-note">
+                    <span style="color: #6b7280;">Obs:</span> ${booking.note}
+                  </div>
+                ` : ''}
+              </div>
+              <div class="schedule-price">
+                <div class="schedule-price-label">Total</div>
+                <div class="schedule-price-value">${fmt(booking.total)}</div>
+                ${booking.pending > 0 ? `
+                  <div class="schedule-pending">
+                    Falta: ${fmt(booking.pending)}
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
+// Render
+function render() {
+  document.getElementById('root').innerHTML = `
+    <div class="container">
+      <div class="card">
+        <h1 class="title">Sítio Escola de Cura</h1>
+        <div class="tabs">
+          <button class="tab ${state.activeTab === 'bookings' ? 'active' : ''}" onclick="changeTab('bookings')">
+            <i data-lucide="plus"></i>
+            Hospedagens
+          </button>
+          <button class="tab ${state.activeTab === 'schedule' ? 'active' : ''}" onclick="changeTab('schedule')">
+            <i data-lucide="calendar"></i>
+            Agendamentos
+          </button>
+        </div>
+        ${state.activeTab === 'bookings' ? renderBookingsTab() : renderScheduleTab()}
+      </div>
+    </div>
+  `;
+  lucide.createIcons();
+}
+
+document.addEventListener('DOMContentLoaded', loadBookings);
 </script>
 </body>
 </html>
