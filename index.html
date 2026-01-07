@@ -5,131 +5,208 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Sítio Escola de Cura - Hospedagens</title>
 
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2334d399'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'>S</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2334d399'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'>S</text></svg>">
-<meta name="theme-color" content="#34d399">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2310b981'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'>S</text></svg>">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2310b981'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'>S</text></svg>">
+<meta name="theme-color" content="#10b981">
 
 <script src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --bg-primary: #0a0f1a;
+    --bg-secondary: #111827;
+    --bg-tertiary: #1f2937;
+    --bg-hover: #374151;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --text-muted: #9ca3af;
+    --accent-primary: #10b981;
+    --accent-secondary: #34d399;
+    --accent-hover: #059669;
+    --border-color: #374151;
+    --orange: #fb923c;
+    --red: #ef4444;
+    --blue: #3b82f6;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #0f172a 100%);
     min-height: 100vh;
-    padding: 12px;
-    color: #1f2937;
+    padding: 16px;
+    color: var(--text-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-50px, 50px) rotate(180deg); }
 }
 
 @media (min-width: 768px) {
-    body {
-        padding: 24px;
-    }
+    body { padding: 24px; }
 }
 
 .container {
     max-width: 1400px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    padding: 16px;
+    background: rgba(31, 41, 55, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(55, 65, 81, 0.5);
+    border-radius: 24px;
+    box-shadow: var(--shadow-lg);
+    padding: 20px;
     margin-bottom: 24px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: slideUp 0.6s ease-out;
 }
 
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
-}
-
-@media (min-width: 768px) {
-    .card {
-        padding: 24px;
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
+@media (min-width: 768px) {
+    .card { padding: 32px; }
+}
+
 .title {
-    font-size: 24px;
-    font-weight: 800;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     text-align: center;
+    letter-spacing: -0.5px;
 }
 
 @media (min-width: 768px) {
     .title {
-        font-size: 30px;
-        margin-bottom: 24px;
+        font-size: 36px;
+        margin-bottom: 32px;
     }
 }
 
 .tabs {
     display: flex;
     gap: 8px;
-    border-bottom: 2px solid #e5e7eb;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
+    background: var(--bg-secondary);
+    padding: 6px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
 }
 
 .tab {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
-    padding: 8px 16px;
-    font-weight: 600;
+    padding: 12px 20px;
+    font-weight: 500;
+    font-size: 14px;
     background: none;
     border: none;
     cursor: pointer;
-    color: #6b7280;
-    transition: all 0.3s ease;
-    border-bottom: 3px solid transparent;
+    color: var(--text-muted);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.tab::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 .tab:hover {
-    color: #667eea;
-    background: rgba(102, 126, 234, 0.1);
-    border-radius: 8px 8px 0 0;
+    color: var(--text-secondary);
+    transform: translateY(-2px);
 }
 
 .tab.active {
-    color: #667eea;
-    border-bottom-color: #667eea;
+    color: white;
+    font-weight: 600;
+}
+
+.tab.active::before {
+    opacity: 1;
+}
+
+.tab span, .tab i {
+    position: relative;
+    z-index: 1;
 }
 
 .form-container {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-    border-radius: 16px;
-    padding: 16px;
-    margin-bottom: 24px;
-    border: 2px solid rgba(102, 126, 234, 0.2);
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.5) 0%, rgba(75, 85, 99, 0.3) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow-md);
 }
 
 .form-title {
-    font-weight: 700;
-    color: #667eea;
-    margin-bottom: 12px;
+    font-weight: 600;
     font-size: 18px;
+    color: var(--accent-secondary);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .form-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 14px;
+    margin-bottom: 14px;
 }
 
 @media (min-width: 768px) {
@@ -139,25 +216,41 @@ body {
 }
 
 .input {
-    padding: 10px 12px;
-    background-color: white;
-    color: #1f2937;
-    border: 2px solid #e5e7eb;
-    border-radius: 10px;
-    font-size: 16px;
+    padding: 13px 16px;
+    background: rgba(75, 85, 99, 0.4);
+    color: white;
+    border: 1px solid rgba(107, 114, 128, 0.5);
+    border-radius: 12px;
+    font-size: 15px;
     width: 100%;
+    font-family: 'Inter', sans-serif;
     transition: all 0.3s ease;
-    font-weight: 500;
 }
 
 .input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: var(--accent-primary);
+    background: rgba(75, 85, 99, 0.6);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    transform: translateY(-1px);
 }
 
 .input::placeholder {
-    color: #9ca3af;
+    color: var(--text-muted);
+}
+
+.input[type="date"]::-webkit-datetime-edit-text,
+.input[type="date"]::-webkit-datetime-edit-month-field,
+.input[type="date"]::-webkit-datetime-edit-day-field,
+.input[type="date"]::-webkit-datetime-edit-year-field {
+    color: var(--text-muted);
+}
+
+.input[type="date"]:focus::-webkit-datetime-edit-text,
+.input[type="date"]:focus::-webkit-datetime-edit-month-field,
+.input[type="date"]:focus::-webkit-datetime-edit-day-field,
+.input[type="date"]:focus::-webkit-datetime-edit-year-field {
+    color: white;
 }
 
 .date-wrapper {
@@ -167,15 +260,14 @@ body {
 
 .date-label {
     position: absolute;
-    left: 12px;
+    left: 16px;
     top: 50%;
     transform: translateY(-50%);
-    color: #9ca3af;
+    color: var(--text-muted);
     pointer-events: none;
-    font-size: 16px;
+    font-size: 15px;
     transition: all 0.2s;
     z-index: 1;
-    font-weight: 500;
 }
 
 .input[type="date"]:focus + .date-label,
@@ -189,37 +281,60 @@ body {
 
 .input[type="date"]:focus::-webkit-datetime-edit,
 .input[type="date"]:valid::-webkit-datetime-edit {
-    color: #1f2937;
+    color: white;
 }
 
 .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 8px 24px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-hover) 100%);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     font-weight: 600;
+    font-size: 15px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
 }
 
 .table-container {
     overflow-x: auto;
-    max-height: 600px;
-    overflow-y: auto;
-    background: white;
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(55, 65, 81, 0.5);
+    background: rgba(31, 41, 55, 0.3);
 }
 
 table {
@@ -227,63 +342,59 @@ table {
     border-collapse: collapse;
 }
 
-thead {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
 thead tr {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.6) 0%, rgba(75, 85, 99, 0.4) 100%);
 }
 
 th {
     text-align: left;
-    padding: 12px 8px;
-    font-weight: 700;
-    color: white;
+    padding: 16px 12px;
+    font-weight: 600;
+    color: var(--accent-secondary);
     font-size: 12px;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 tbody tr {
-    border-bottom: 1px solid #f3f4f6;
+    border-bottom: 1px solid rgba(55, 65, 81, 0.5);
     transition: all 0.2s ease;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #f9fafb;
-}
-
 tbody tr:hover {
-    background-color: rgba(102, 126, 234, 0.05);
+    background: rgba(55, 65, 81, 0.4);
+    transform: scale(1.01);
 }
 
 td {
-    padding: 12px 8px;
+    padding: 16px 12px;
     font-size: 14px;
-    font-weight: 500;
 }
 
 .text-gray-100 {
-    color: #1f2937;
+    color: var(--text-primary);
 }
 
 .text-gray-300 {
-    color: #4b5563;
+    color: var(--text-secondary);
 }
 
 .text-gray-400 {
-    color: #6b7280;
+    color: var(--text-muted);
 }
 
 .text-green {
-    color: #10b981;
+    color: var(--accent-secondary);
     font-weight: 600;
 }
 
 .text-orange {
-    color: #f59e0b;
+    color: var(--orange);
+    font-weight: 600;
+}
+
+.text-blue {
+    color: var(--blue);
     font-weight: 600;
 }
 
@@ -294,176 +405,212 @@ td {
 }
 
 .icon-btn {
-    background: none;
-    border: none;
+    background: rgba(75, 85, 99, 0.3);
+    border: 1px solid rgba(107, 114, 128, 0.3);
     cursor: pointer;
-    padding: 4px;
+    padding: 8px;
     border-radius: 8px;
     transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon-btn:hover {
-    transform: scale(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .icon-btn.blue {
-    color: #60a5fa;
+    color: var(--blue);
+    border-color: rgba(59, 130, 246, 0.3);
 }
 
 .icon-btn.blue:hover {
-    background: rgba(96, 165, 250, 0.1);
+    background: rgba(59, 130, 246, 0.2);
+    border-color: var(--blue);
 }
 
 .icon-btn.red {
-    color: #f87171;
+    color: var(--red);
+    border-color: rgba(239, 68, 68, 0.3);
 }
 
 .icon-btn.red:hover {
-    background: rgba(248, 113, 113, 0.1);
+    background: rgba(239, 68, 68, 0.2);
+    border-color: var(--red);
 }
 
 .icon-btn.green {
-    color: #34d399;
+    color: var(--accent-primary);
+    border-color: rgba(16, 185, 129, 0.3);
 }
 
 .icon-btn.green:hover {
-    background: rgba(52, 211, 153, 0.1);
+    background: rgba(16, 185, 129, 0.2);
+    border-color: var(--accent-primary);
 }
 
 .icon-btn.gray {
-    color: #9ca3af;
+    color: var(--text-muted);
+    border-color: rgba(156, 163, 175, 0.3);
 }
 
 .icon-btn.gray:hover {
-    background: rgba(156, 163, 175, 0.1);
+    background: rgba(156, 163, 175, 0.2);
+    border-color: var(--text-muted);
 }
 
 .empty-state {
     text-align: center;
-    padding: 48px;
-    color: #9ca3af;
-    font-size: 16px;
+    padding: 48px 32px;
+    color: var(--text-muted);
 }
 
 .schedule-container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
 }
 
 .schedule-title {
     font-size: 24px;
     font-weight: 700;
-    color: #667eea;
-    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 24px;
 }
 
 .schedule-card {
-    background: white;
-    border-radius: 16px;
-    padding: 16px;
-    border-left: 4px solid #667eea;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    background: linear-gradient(135deg, rgba(55, 65, 81, 0.5) 0%, rgba(75, 85, 99, 0.3) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    border-radius: 20px;
+    padding: 24px;
+    border-left: 4px solid var(--accent-primary);
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.schedule-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
 }
 
 .schedule-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateX(8px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(16, 185, 129, 0.5);
+}
+
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.schedule-content {
+    flex: 1;
+    min-width: 250px;
 }
 
 .schedule-name {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
-    color: #1f2937;
+    color: white;
     margin-bottom: 12px;
+    letter-spacing: -0.3px;
 }
 
 .schedule-grid {
     display: grid;
-    gap: 8px;
+    grid-template-columns: 1fr;
+    gap: 10px;
     font-size: 14px;
-    margin-bottom: 12px;
+}
+
+@media (min-width: 768px) {
+    .schedule-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .schedule-note {
     margin-top: 12px;
-    padding: 12px;
-    background: rgba(102, 126, 234, 0.05);
-    border-radius: 8px;
-    font-size: 13px;
-    color: #4b5563;
+    padding-top: 12px;
+    border-top: 1px solid rgba(75, 85, 99, 0.5);
+    font-size: 14px;
+    color: var(--text-muted);
     font-style: italic;
 }
 
-.toast-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.toast {
-    background: white;
+.schedule-price {
+    text-align: right;
+    background: rgba(16, 185, 129, 0.1);
     padding: 16px 20px;
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 300px;
-    animation: slideIn 0.3s ease;
-    border-left: 4px solid;
+    border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
-.toast.success {
-    border-left-color: #10b981;
+.schedule-price-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
 }
 
-.toast.error {
-    border-left-color: #ef4444;
+.schedule-price-value {
+    font-size: 24px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.toast-message {
-    flex: 1;
-    font-size: 14px;
+.schedule-pending {
+    font-size: 12px;
+    color: var(--orange);
+    margin-top: 8px;
     font-weight: 600;
-    color: #1f2937;
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateX(400px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.empty-schedule {
+    text-align: center;
+    padding: 80px 32px;
+    color: var(--text-muted);
 }
 
-@keyframes slideOut {
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(400px);
-        opacity: 0;
-    }
+.empty-schedule i {
+    opacity: 0.3;
+    margin-bottom: 16px;
 }
 
-.toast.removing {
-    animation: slideOut 0.3s ease forwards;
+.hidden {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .schedule-price {
+        width: 100%;
+        text-align: center;
+    }
 }
 </style>
 </head>
 
 <body>
-<div id="toast-container" class="toast-container"></div>
 <div id="root"></div>
 
 <script>
@@ -481,27 +628,6 @@ let state = {
   newBooking: {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: '', seller: '', guests: ''}
 };
 
-function showToast(message, type = 'success') {
-  const container = document.getElementById('toast-container');
-  const toast = document.createElement('div');
-  toast.className = `toast ${type}`;
-  
-  const icon = type === 'success' ? '✓' : '✕';
-  const iconColor = type === 'success' ? '#10b981' : '#ef4444';
-  
-  toast.innerHTML = `
-    <div style="color: ${iconColor}; font-size: 20px; font-weight: bold;">${icon}</div>
-    <div class="toast-message">${message}</div>
-  `;
-  
-  container.appendChild(toast);
-  
-  setTimeout(() => {
-    toast.classList.add('removing');
-    setTimeout(() => toast.remove(), 300);
-  }, 3000);
-}
-
 async function loadBookings() {
   const snap = await db.collection("bookings").orderBy("checkIn").get();
   state.bookings = snap.docs.map(d => d.data());
@@ -511,7 +637,7 @@ async function loadBookings() {
 async function handleAdd() {
   const b = state.newBooking;
   if (!b.name || !b.checkIn || !b.checkOut) {
-    showToast('Preencha nome e datas', 'error');
+    alert('Preencha nome e datas');
     return;
   }
 
@@ -525,7 +651,7 @@ async function handleAdd() {
   });
 
   if (conflict) {
-    showToast(`Data indisponível! Já existe reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`, 'error');
+    alert(`Data indisponível! Já existe uma reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`);
     return;
   }
 
@@ -544,14 +670,12 @@ async function handleAdd() {
 
   await db.collection("bookings").doc(booking.id).set(booking);
   state.newBooking = {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: '', seller: '', guests: ''};
-  showToast('Reserva cadastrada com sucesso!', 'success');
   loadBookings();
 }
 
 async function handleDelete(id) {
-  if (confirm('Deseja realmente excluir esta reserva?')) {
+  if (confirm('Excluir esta reserva?')) {
     await db.collection("bookings").doc(id).delete();
-    showToast('Reserva excluída com sucesso!', 'success');
     loadBookings();
   }
 }
@@ -574,20 +698,20 @@ async function handleSaveEdit(id) {
 
   const conflict = state.bookings.find(booking => {
     if (booking.id === id) return false;
+    
     const existingCheckIn = new Date(booking.checkIn + 'T00:00:00');
     const existingCheckOut = new Date(booking.checkOut + 'T00:00:00');
     return !(newCheckOut <= existingCheckIn || newCheckIn >= existingCheckOut);
   });
 
   if (conflict) {
-    showToast(`Data indisponível! Já existe reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`, 'error');
+    alert(`Data indisponível! Já existe uma reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`);
     return;
   }
 
   b.pending = b.total - b.paid;
   await db.collection("bookings").doc(id).set(b);
   state.editingId = null;
-  showToast('Reserva atualizada com sucesso!', 'success');
   loadBookings();
 }
 
@@ -617,31 +741,56 @@ function fmtDate(d) {
   return new Date(d + 'T00:00:00').toLocaleDateString('pt-BR');
 }
 
+function isEventCompleted(checkOutDate) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const checkOut = new Date(checkOutDate + 'T00:00:00');
+  return checkOut < today;
+}
+
+function getEventStatus(checkInDate, checkOutDate) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const checkIn = new Date(checkInDate + 'T00:00:00');
+  const checkOut = new Date(checkOutDate + 'T00:00:00');
+  
+  if (checkOut < today) {
+    return { status: 'Realizado', color: 'text-gray-400' };
+  } else if (checkIn <= today && checkOut >= today) {
+    return { status: 'Em andamento', color: 'text-blue' };
+  } else {
+    return { status: 'Agendado', color: 'text-green' };
+  }
+}
+
 function renderBookingsTab() {
   return `
     <div class="form-container">
-      <h2 class="form-title">Nova Reserva</h2>
+      <h2 class="form-title">
+        <i data-lucide="plus-circle" style="width: 20px; height: 20px;"></i>
+        Nova Reserva
+      </h2>
       <div class="form-grid">
         <input type="text" class="input" placeholder="Nome" value="${state.newBooking.name}" onchange="updateNewBooking('name', this.value)" />
         <div class="date-wrapper">
-          <input type="date" class="input" value="${state.newBooking.checkIn}" onchange="updateNewBooking('checkIn', this.value)" />
+          <input type="date" class="input" value="${state.newBooking.checkIn}" onchange="updateNewBooking('checkIn', this.value)" onfocus="this.showPicker()" />
           <label class="date-label">Entrada</label>
         </div>
         <div class="date-wrapper">
-          <input type="date" class="input" value="${state.newBooking.checkOut}" onchange="updateNewBooking('checkOut', this.value)" />
+          <input type="date" class="input" value="${state.newBooking.checkOut}" onchange="updateNewBooking('checkOut', this.value)" onfocus="this.showPicker()" />
           <label class="date-label">Saída</label>
         </div>
         <input type="number" class="input" placeholder="Qtd. Pessoas" value="${state.newBooking.guests}" onchange="updateNewBooking('guests', this.value)" />
         <input type="number" class="input" placeholder="Valor total" value="${state.newBooking.total}" onchange="updateNewBooking('total', this.value)" />
       </div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 14px;">
         <input type="number" class="input" placeholder="Valor pago" value="${state.newBooking.paid}" onchange="updateNewBooking('paid', this.value)" />
         <input type="text" class="input" placeholder="Quem vendeu?" value="${state.newBooking.seller}" onchange="updateNewBooking('seller', this.value)" />
-        <input type="text" class="input" placeholder="Anotações" value="${state.newBooking.note}" onchange="updateNewBooking('note', this.value)" />
+        <input type="text" class="input" placeholder="Anotações (opcional)" value="${state.newBooking.note}" onchange="updateNewBooking('note', this.value)" />
       </div>
       <button class="btn" onclick="handleAdd()">
         <i data-lucide="plus"></i>
-        Adicionar
+        <span>Adicionar</span>
       </button>
     </div>
 
@@ -656,6 +805,7 @@ function renderBookingsTab() {
             <th>Total</th>
             <th>Pago</th>
             <th>Pendente</th>
+            <th>Status</th>
             <th>Vendedor</th>
             <th>Anotações</th>
             <th style="text-align: center;">Ações</th>
@@ -663,13 +813,17 @@ function renderBookingsTab() {
         </thead>
         <tbody>
           ${state.bookings.length === 0 ? `
-            <tr><td colspan="10" class="empty-state">Nenhuma reserva cadastrada</td></tr>
+            <tr>
+              <td colspan="10" class="empty-state">Nenhuma reserva cadastrada</td>
+            </tr>
           ` : state.bookings.map(booking => `
             <tr>
               <td>
                 ${state.editingId === booking.id ? `
                   <input type="text" class="input" value="${booking.name}" onchange="updateBooking('${booking.id}', 'name', this.value)" />
-                ` : `<span class="text-gray-100" style="font-weight: 600;">${booking.name}</span>`}
+                ` : `
+                  <span class="text-gray-100" style="font-weight: 600;">${booking.name}</span>
+                `}
               </td>
               <td class="text-gray-300">
                 ${state.editingId === booking.id ? `
@@ -700,102 +854,4 @@ function renderBookingsTab() {
               <td class="text-green">
                 ${state.editingId === booking.id ? `
                   <input type="number" class="input" style="width: 80px;" value="${booking.paid}" onchange="updateBooking('${booking.id}', 'paid', this.value)" />
-                ` : fmt(booking.paid)}
-              </td>
-              <td>
-                <span class="${booking.pending > 0 ? 'text-orange' : 'text-green'}">
-                  ${fmt(booking.pending)}
-                </span>
-              </td>
-              <td class="text-gray-300">
-                ${state.editingId === booking.id ? `
-                  <input type="text" class="input" value="${booking.seller || ''}" onchange="updateBooking('${booking.id}', 'seller', this.value)" />
-                ` : `<span class="text-gray-400">${booking.seller || '-'}</span>`}
-              </td>
-              <td class="text-gray-300">
-                ${state.editingId === booking.id ? `
-                  <input type="text" class="input" value="${booking.note || ''}" onchange="updateBooking('${booking.id}', 'note', this.value)" />
-                ` : `<span class="text-gray-400">${booking.note || '-'}</span>`}
-              </td>
-              <td>
-                <div class="actions">
-                  ${state.editingId === booking.id ? `
-                    <button class="icon-btn green" onclick="handleSaveEdit('${booking.id}')" title="Salvar">
-                      <i data-lucide="check"></i>
-                    </button>
-                    <button class="icon-btn gray" onclick="handleCancelEdit()" title="Cancelar">
-                      <i data-lucide="x"></i>
-                    </button>
-                  ` : `
-                    <button class="icon-btn blue" onclick="handleEdit('${booking.id}')" title="Editar">
-                      <i data-lucide="edit-2"></i>
-                    </button>
-                    <button class="icon-btn red" onclick="handleDelete('${booking.id}')" title="Excluir">
-                      <i data-lucide="trash-2"></i>
-                    </button>
-                  `}
-                </div>
-              </td>
-            </tr>
-          `).join('')}
-        </tbody>
-      </table>
-    </div>
-  `;
-}
-
-function renderScheduleTab() {
-  if (state.bookings.length === 0) {
-    return `<div class="empty-state">Nenhum agendamento cadastrado ainda</div>`;
-  }
-
-  const sortedBookings = [...state.bookings].sort((a, b) => {
-    return new Date(a.checkIn) - new Date(b.checkIn);
-  });
-
-  return `
-    <h2 class="schedule-title">Calendário de Agendamentos</h2>
-    <div class="schedule-container">
-      ${sortedBookings.map(booking => {
-        const checkIn = new Date(booking.checkIn + 'T00:00:00');
-        const checkOut = new Date(booking.checkOut + 'T00:00:00');
-        const days = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
-        
-        return `
-          <div class="schedule-card">
-            <h3 class="schedule-name">${booking.name}</h3>
-            <div class="schedule-grid">
-              <div style="color: #6b7280;">
-                <strong style="color: #1f2937;">Entrada:</strong> ${fmtDate(booking.checkIn)}
-              </div>
-              <div style="color: #6b7280;">
-                <strong style="color: #1f2937;">Saída:</strong> ${fmtDate(booking.checkOut)}
-              </div>
-              <div style="color: #6b7280;">
-                <strong style="color: #1f2937;">Período:</strong> ${days} ${days === 1 ? 'dia' : 'dias'}
-              </div>
-              <div style="color: #6b7280;">
-                <strong style="color: #1f2937;">Pessoas:</strong> ${booking.guests || 0}
-              </div>
-            </div>
-            ${booking.note ? `<div class="schedule-note">Obs: ${booking.note}</div>` : ''}
-            ${booking.seller ? `<div class="schedule-note">Vendedor: ${booking.seller}</div>` : ''}
-            <div style="margin-top: 16px; padding-top: 16px; border-top: 2px solid #f3f4f6; text-align: right;">
-              <div style="font-size: 12px; color: #6b7280;">TOTAL</div>
-              <div style="font-size: 24px; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${fmt(booking.total)}</div>
-              ${booking.pending > 0 ? `<div style="font-size: 13px; color: #f59e0b; font-weight: 600;">Falta: ${fmt(booking.pending)}</div>` : `<div style="font-size: 13px; color: #10b981; font-weight: 600;">✓ Pago</div>`}
-            </div>
-          </div>
-        `;
-      }).join('')}
-    </div>
-  `;
-}
-
-function render() {
-  document.getElementById('root').innerHTML = `
-    <div class="container">
-      <div class="card">
-        <h1 class="title">Sítio Escola de Cura</h1>
-        <div class="tabs">
-          <button class="tab ${state.activeTab === 'bookings' ? '
+                ` : fmt(booking
