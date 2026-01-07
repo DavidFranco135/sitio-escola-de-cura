@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Sítio Escola de Cura - Hospedagens</title>
 
+<!-- Ícones para diferentes dispositivos -->
 <link rel="icon" type="image/png" sizes="32x32" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%2334d399'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'>S</text></svg>">
 <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2334d399'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white' font-family='Arial, sans-serif' font-weight='bold'>S</text></svg>">
 <meta name="theme-color" content="#34d399">
@@ -22,10 +23,10 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(to bottom right, #1a1a1a, #0d0d0d);
     min-height: 100vh;
     padding: 12px;
-    color: #1f2937;
+    color: #e5e7eb;
 }
 
 @media (min-width: 768px) {
@@ -35,23 +36,16 @@ body {
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1280px;
     margin: 0 auto;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background-color: #1f2937;
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
     padding: 16px;
     margin-bottom: 24px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
 }
 
 @media (min-width: 768px) {
@@ -62,11 +56,8 @@ body {
 
 .title {
     font-size: 24px;
-    font-weight: 800;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-weight: bold;
+    color: #34d399;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -81,7 +72,7 @@ body {
 .tabs {
     display: flex;
     gap: 8px;
-    border-bottom: 2px solid #e5e7eb;
+    border-bottom: 1px solid #374151;
     margin-bottom: 24px;
 }
 
@@ -90,39 +81,35 @@ body {
     align-items: center;
     gap: 8px;
     padding: 8px 16px;
-    font-weight: 600;
+    font-weight: 500;
     background: none;
     border: none;
     cursor: pointer;
-    color: #6b7280;
-    transition: all 0.3s ease;
-    border-bottom: 3px solid transparent;
+    color: #9ca3af;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
 }
 
 .tab:hover {
-    color: #667eea;
-    background: rgba(102, 126, 234, 0.1);
-    border-radius: 8px 8px 0 0;
+    color: #d1d5db;
 }
 
 .tab.active {
-    color: #667eea;
-    border-bottom-color: #667eea;
+    color: #34d399;
+    border-bottom-color: #34d399;
 }
 
 .form-container {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-    border-radius: 16px;
+    background-color: #374151;
+    border-radius: 8px;
     padding: 16px;
     margin-bottom: 24px;
-    border: 2px solid rgba(102, 126, 234, 0.2);
 }
 
 .form-title {
-    font-weight: 700;
-    color: #667eea;
+    font-weight: 600;
+    color: #34d399;
     margin-bottom: 12px;
-    font-size: 18px;
 }
 
 .form-grid {
@@ -140,24 +127,37 @@ body {
 
 .input {
     padding: 10px 12px;
-    background-color: white;
-    color: #1f2937;
-    border: 2px solid #e5e7eb;
-    border-radius: 10px;
+    background-color: #4b5563;
+    color: white;
+    border: 1px solid #6b7280;
+    border-radius: 8px;
     font-size: 16px;
     width: 100%;
-    transition: all 0.3s ease;
-    font-weight: 500;
 }
 
 .input:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    border-color: #34d399;
+    box-shadow: 0 0 0 2px rgba(52, 211, 153, 0.2);
 }
 
 .input::placeholder {
     color: #9ca3af;
+}
+
+/* Estilo para placeholder dos inputs de data */
+.input[type="date"]::-webkit-datetime-edit-text,
+.input[type="date"]::-webkit-datetime-edit-month-field,
+.input[type="date"]::-webkit-datetime-edit-day-field,
+.input[type="date"]::-webkit-datetime-edit-year-field {
+    color: #9ca3af;
+}
+
+.input[type="date"]:focus::-webkit-datetime-edit-text,
+.input[type="date"]:focus::-webkit-datetime-edit-month-field,
+.input[type="date"]:focus::-webkit-datetime-edit-day-field,
+.input[type="date"]:focus::-webkit-datetime-edit-year-field {
+    color: white;
 }
 
 .date-wrapper {
@@ -175,7 +175,6 @@ body {
     font-size: 16px;
     transition: all 0.2s;
     z-index: 1;
-    font-weight: 500;
 }
 
 .input[type="date"]:focus + .date-label,
@@ -183,13 +182,14 @@ body {
     opacity: 0;
 }
 
+/* Esconder o placeholder padrão do navegador */
 .input[type="date"]::-webkit-datetime-edit {
     color: transparent;
 }
 
 .input[type="date"]:focus::-webkit-datetime-edit,
 .input[type="date"]:valid::-webkit-datetime-edit {
-    color: #1f2937;
+    color: white;
 }
 
 .btn {
@@ -198,28 +198,21 @@ body {
     justify-content: center;
     gap: 8px;
     padding: 8px 24px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-color: #059669;
     color: white;
     border: none;
-    border-radius: 10px;
-    font-weight: 600;
+    border-radius: 8px;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    transition: background-color 0.2s;
 }
 
 .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    background-color: #047857;
 }
 
 .table-container {
     overflow-x: auto;
-    max-height: 600px;
-    overflow-y: auto;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 table {
@@ -227,64 +220,53 @@ table {
     border-collapse: collapse;
 }
 
-thead {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
 thead tr {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-bottom: 2px solid #374151;
 }
 
 th {
     text-align: left;
     padding: 12px 8px;
-    font-weight: 700;
-    color: white;
+    font-weight: 600;
+    color: #34d399;
     font-size: 12px;
     text-transform: uppercase;
 }
 
 tbody tr {
-    border-bottom: 1px solid #f3f4f6;
-    transition: all 0.2s ease;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9fafb;
+    border-bottom: 1px solid #374151;
+    transition: background-color 0.2s;
 }
 
 tbody tr:hover {
-    background-color: rgba(102, 126, 234, 0.05);
+    background-color: #374151;
 }
 
 td {
     padding: 12px 8px;
     font-size: 14px;
-    font-weight: 500;
 }
 
 .text-gray-100 {
-    color: #1f2937;
+    color: #f3f4f6;
 }
 
 .text-gray-300 {
-    color: #4b5563;
+    color: #d1d5db;
 }
 
 .text-gray-400 {
-    color: #6b7280;
+    color: #9ca3af;
 }
 
 .text-green {
-    color: #10b981;
-    font-weight: 600;
+    color: #34d399;
+    font-weight: 500;
 }
 
 .text-orange {
-    color: #f59e0b;
-    font-weight: 600;
+    color: #fb923c;
+    font-weight: 500;
 }
 
 .actions {
@@ -298,12 +280,7 @@ td {
     border: none;
     cursor: pointer;
     padding: 4px;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-}
-
-.icon-btn:hover {
-    transform: scale(1.1);
+    transition: color 0.2s;
 }
 
 .icon-btn.blue {
@@ -311,7 +288,7 @@ td {
 }
 
 .icon-btn.blue:hover {
-    background: rgba(96, 165, 250, 0.1);
+    color: #93c5fd;
 }
 
 .icon-btn.red {
@@ -319,7 +296,7 @@ td {
 }
 
 .icon-btn.red:hover {
-    background: rgba(248, 113, 113, 0.1);
+    color: #fca5a5;
 }
 
 .icon-btn.green {
@@ -327,7 +304,7 @@ td {
 }
 
 .icon-btn.green:hover {
-    background: rgba(52, 211, 153, 0.1);
+    color: #6ee7b7;
 }
 
 .icon-btn.gray {
@@ -335,14 +312,13 @@ td {
 }
 
 .icon-btn.gray:hover {
-    background: rgba(156, 163, 175, 0.1);
+    color: #d1d5db;
 }
 
 .empty-state {
     text-align: center;
-    padding: 48px;
+    padding: 32px;
     color: #9ca3af;
-    font-size: 16px;
 }
 
 .schedule-container {
@@ -353,120 +329,96 @@ td {
 
 .schedule-title {
     font-size: 24px;
-    font-weight: 700;
-    color: #667eea;
+    font-weight: 600;
+    color: #34d399;
     margin-bottom: 16px;
 }
 
 .schedule-card {
-    background: white;
-    border-radius: 16px;
+    background-color: #374151;
+    border-radius: 8px;
     padding: 16px;
-    border-left: 4px solid #667eea;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+    border-left: 4px solid #34d399;
 }
 
-.schedule-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.schedule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.schedule-content {
+    flex: 1;
+    min-width: 250px;
 }
 
 .schedule-name {
     font-size: 18px;
-    font-weight: 700;
-    color: #1f2937;
-    margin-bottom: 12px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 8px;
 }
 
 .schedule-grid {
     display: grid;
+    grid-template-columns: 1fr;
     gap: 8px;
     font-size: 14px;
-    margin-bottom: 12px;
+}
+
+@media (min-width: 768px) {
+    .schedule-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .schedule-note {
-    margin-top: 12px;
-    padding: 12px;
-    background: rgba(102, 126, 234, 0.05);
-    border-radius: 8px;
-    font-size: 13px;
-    color: #4b5563;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #9ca3af;
     font-style: italic;
 }
 
-.toast-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.schedule-price {
+    text-align: right;
+    margin-left: 16px;
 }
 
-.toast {
-    background: white;
-    padding: 16px 20px;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 300px;
-    animation: slideIn 0.3s ease;
-    border-left: 4px solid;
-}
-
-.toast.success {
-    border-left-color: #10b981;
-}
-
-.toast.error {
-    border-left-color: #ef4444;
-}
-
-.toast-message {
-    flex: 1;
+.schedule-price-label {
     font-size: 14px;
-    font-weight: 600;
-    color: #1f2937;
+    color: #9ca3af;
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateX(400px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
+.schedule-price-value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #34d399;
 }
 
-@keyframes slideOut {
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(400px);
-        opacity: 0;
-    }
+.schedule-pending {
+    font-size: 12px;
+    color: #fb923c;
+    margin-top: 4px;
 }
 
-.toast.removing {
-    animation: slideOut 0.3s ease forwards;
+.empty-schedule {
+    text-align: center;
+    padding: 48px;
+    color: #9ca3af;
+}
+
+.hidden {
+    display: none;
 }
 </style>
 </head>
 
 <body>
-<div id="toast-container" class="toast-container"></div>
 <div id="root"></div>
 
 <script>
+// Firebase
 firebase.initializeApp({
   apiKey: "AIzaSyDIQw3v9C7FnRNf8_uuiqbx2NLvVErNke0",
   authDomain: "sitio-escola-de-cura.firebaseapp.com",
@@ -474,6 +426,7 @@ firebase.initializeApp({
 });
 const db = firebase.firestore();
 
+// Estado
 let state = {
   activeTab: 'bookings',
   bookings: [],
@@ -481,27 +434,7 @@ let state = {
   newBooking: {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: '', seller: '', guests: ''}
 };
 
-function showToast(message, type = 'success') {
-  const container = document.getElementById('toast-container');
-  const toast = document.createElement('div');
-  toast.className = `toast ${type}`;
-  
-  const icon = type === 'success' ? '✓' : '✕';
-  const iconColor = type === 'success' ? '#10b981' : '#ef4444';
-  
-  toast.innerHTML = `
-    <div style="color: ${iconColor}; font-size: 20px; font-weight: bold;">${icon}</div>
-    <div class="toast-message">${message}</div>
-  `;
-  
-  container.appendChild(toast);
-  
-  setTimeout(() => {
-    toast.classList.add('removing');
-    setTimeout(() => toast.remove(), 300);
-  }, 3000);
-}
-
+// Firestore
 async function loadBookings() {
   const snap = await db.collection("bookings").orderBy("checkIn").get();
   state.bookings = snap.docs.map(d => d.data());
@@ -511,21 +444,24 @@ async function loadBookings() {
 async function handleAdd() {
   const b = state.newBooking;
   if (!b.name || !b.checkIn || !b.checkOut) {
-    showToast('Preencha nome e datas', 'error');
+    alert('Preencha nome e datas');
     return;
   }
 
+  // Verificar se as datas estão disponíveis
   const newCheckIn = new Date(b.checkIn + 'T00:00:00');
   const newCheckOut = new Date(b.checkOut + 'T00:00:00');
 
   const conflict = state.bookings.find(booking => {
     const existingCheckIn = new Date(booking.checkIn + 'T00:00:00');
     const existingCheckOut = new Date(booking.checkOut + 'T00:00:00');
+
+    // Verifica se há sobreposição de datas (qualquer interseção)
     return !(newCheckOut <= existingCheckIn || newCheckIn >= existingCheckOut);
   });
 
   if (conflict) {
-    showToast(`Data indisponível! Já existe reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`, 'error');
+    alert(`Data indisponível! Já existe uma reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`);
     return;
   }
 
@@ -544,14 +480,12 @@ async function handleAdd() {
 
   await db.collection("bookings").doc(booking.id).set(booking);
   state.newBooking = {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: '', seller: '', guests: ''};
-  showToast('Reserva cadastrada com sucesso!', 'success');
   loadBookings();
 }
 
 async function handleDelete(id) {
-  if (confirm('Deseja realmente excluir esta reserva?')) {
+  if (confirm('Excluir esta reserva?')) {
     await db.collection("bookings").doc(id).delete();
-    showToast('Reserva excluída com sucesso!', 'success');
     loadBookings();
   }
 }
@@ -569,28 +503,32 @@ function handleCancelEdit() {
 async function handleSaveEdit(id) {
   const b = state.bookings.find(x => x.id === id);
   
+  // Verificar se as novas datas estão disponíveis (excluindo a própria reserva)
   const newCheckIn = new Date(b.checkIn + 'T00:00:00');
   const newCheckOut = new Date(b.checkOut + 'T00:00:00');
 
   const conflict = state.bookings.find(booking => {
-    if (booking.id === id) return false;
+    if (booking.id === id) return false; // Ignora a própria reserva
+    
     const existingCheckIn = new Date(booking.checkIn + 'T00:00:00');
     const existingCheckOut = new Date(booking.checkOut + 'T00:00:00');
+
+    // Verifica se há sobreposição de datas (qualquer interseção)
     return !(newCheckOut <= existingCheckIn || newCheckIn >= existingCheckOut);
   });
 
   if (conflict) {
-    showToast(`Data indisponível! Já existe reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`, 'error');
+    alert(`Data indisponível! Já existe uma reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`);
     return;
   }
 
   b.pending = b.total - b.paid;
   await db.collection("bookings").doc(id).set(b);
   state.editingId = null;
-  showToast('Reserva atualizada com sucesso!', 'success');
   loadBookings();
 }
 
+// Helpers
 function changeTab(t) {
   state.activeTab = t;
   render();
@@ -617,6 +555,7 @@ function fmtDate(d) {
   return new Date(d + 'T00:00:00').toLocaleDateString('pt-BR');
 }
 
+// Render Bookings
 function renderBookingsTab() {
   return `
     <div class="form-container">
@@ -624,11 +563,11 @@ function renderBookingsTab() {
       <div class="form-grid">
         <input type="text" class="input" placeholder="Nome" value="${state.newBooking.name}" onchange="updateNewBooking('name', this.value)" />
         <div class="date-wrapper">
-          <input type="date" class="input" value="${state.newBooking.checkIn}" onchange="updateNewBooking('checkIn', this.value)" />
+          <input type="date" class="input" value="${state.newBooking.checkIn}" onchange="updateNewBooking('checkIn', this.value)" onfocus="this.showPicker()" />
           <label class="date-label">Entrada</label>
         </div>
         <div class="date-wrapper">
-          <input type="date" class="input" value="${state.newBooking.checkOut}" onchange="updateNewBooking('checkOut', this.value)" />
+          <input type="date" class="input" value="${state.newBooking.checkOut}" onchange="updateNewBooking('checkOut', this.value)" onfocus="this.showPicker()" />
           <label class="date-label">Saída</label>
         </div>
         <input type="number" class="input" placeholder="Qtd. Pessoas" value="${state.newBooking.guests}" onchange="updateNewBooking('guests', this.value)" />
@@ -637,7 +576,7 @@ function renderBookingsTab() {
       <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px;">
         <input type="number" class="input" placeholder="Valor pago" value="${state.newBooking.paid}" onchange="updateNewBooking('paid', this.value)" />
         <input type="text" class="input" placeholder="Quem vendeu?" value="${state.newBooking.seller}" onchange="updateNewBooking('seller', this.value)" />
-        <input type="text" class="input" placeholder="Anotações" value="${state.newBooking.note}" onchange="updateNewBooking('note', this.value)" />
+        <input type="text" class="input" placeholder="Anotações (opcional)" value="${state.newBooking.note}" onchange="updateNewBooking('note', this.value)" />
       </div>
       <button class="btn" onclick="handleAdd()">
         <i data-lucide="plus"></i>
@@ -663,13 +602,17 @@ function renderBookingsTab() {
         </thead>
         <tbody>
           ${state.bookings.length === 0 ? `
-            <tr><td colspan="10" class="empty-state">Nenhuma reserva cadastrada</td></tr>
+            <tr>
+              <td colspan="10" class="empty-state">Nenhuma reserva cadastrada</td>
+            </tr>
           ` : state.bookings.map(booking => `
             <tr>
               <td>
                 ${state.editingId === booking.id ? `
                   <input type="text" class="input" value="${booking.name}" onchange="updateBooking('${booking.id}', 'name', this.value)" />
-                ` : `<span class="text-gray-100" style="font-weight: 600;">${booking.name}</span>`}
+                ` : `
+                  <span class="text-gray-100" style="font-weight: 500;">${booking.name}</span>
+                `}
               </td>
               <td class="text-gray-300">
                 ${state.editingId === booking.id ? `
@@ -709,12 +652,12 @@ function renderBookingsTab() {
               </td>
               <td class="text-gray-300">
                 ${state.editingId === booking.id ? `
-                  <input type="text" class="input" value="${booking.seller || ''}" onchange="updateBooking('${booking.id}', 'seller', this.value)" />
+                  <input type="text" class="input" placeholder="Vendedor" value="${booking.seller || ''}" onchange="updateBooking('${booking.id}', 'seller', this.value)" />
                 ` : `<span class="text-gray-400">${booking.seller || '-'}</span>`}
               </td>
               <td class="text-gray-300">
                 ${state.editingId === booking.id ? `
-                  <input type="text" class="input" value="${booking.note || ''}" onchange="updateBooking('${booking.id}', 'note', this.value)" />
+                  <input type="text" class="input" placeholder="Anotação" value="${booking.note || ''}" onchange="updateBooking('${booking.id}', 'note', this.value)" />
                 ` : `<span class="text-gray-400">${booking.note || '-'}</span>`}
               </td>
               <td>
@@ -744,13 +687,22 @@ function renderBookingsTab() {
   `;
 }
 
+// Render Schedule
 function renderScheduleTab() {
   if (state.bookings.length === 0) {
-    return `<div class="empty-state">Nenhum agendamento cadastrado ainda</div>`;
+    return `
+      <div class="empty-schedule">
+        <i data-lucide="calendar" style="width: 64px; height: 64px; opacity: 0.5;"></i>
+        <p>Nenhum agendamento cadastrado ainda</p>
+      </div>
+    `;
   }
 
+  // Ordenar por data de entrada (checkIn) - crescente
   const sortedBookings = [...state.bookings].sort((a, b) => {
-    return new Date(a.checkIn) - new Date(b.checkIn);
+    const dateA = new Date(a.checkIn);
+    const dateB = new Date(b.checkIn);
+    return dateA - dateB;
   });
 
   return `
@@ -763,27 +715,49 @@ function renderScheduleTab() {
         
         return `
           <div class="schedule-card">
-            <h3 class="schedule-name">${booking.name}</h3>
-            <div class="schedule-grid">
-              <div style="color: #6b7280;">
-                <strong style="color: #1f2937;">Entrada:</strong> ${fmtDate(booking.checkIn)}
+            <div class="schedule-header">
+              <div class="schedule-content">
+                <h3 class="schedule-name">${booking.name}</h3>
+                <div class="schedule-grid">
+                  <div class="text-gray-300">
+                    <span class="text-gray-400">Entrada:</span> ${fmtDate(booking.checkIn)}
+                  </div>
+                  <div class="text-gray-300">
+                    <span class="text-gray-400">Saída:</span> ${fmtDate(booking.checkOut)}
+                  </div>
+                  <div class="text-gray-300">
+                    <span class="text-gray-400">Período:</span> ${days} ${days === 1 ? 'dia' : 'dias'}
+                  </div>
+                  <div class="text-gray-300">
+                    <span class="text-gray-400">Pessoas:</span> ${booking.guests || 0}
+                  </div>
+                  <div class="text-gray-300">
+                    <span class="text-gray-400">Status Pgto:</span> 
+                    <span class="${booking.pending > 0 ? 'text-orange' : 'text-green'}">
+                      ${booking.pending > 0 ? 'Pendente' : 'Pago'}
+                    </span>
+                  </div>
+                </div>
+                ${booking.note ? `
+                  <div class="schedule-note">
+                    <span style="color: #6b7280;">Obs:</span> ${booking.note}
+                  </div>
+                ` : ''}
+                ${booking.seller ? `
+                  <div class="schedule-note">
+                    <span style="color: #6b7280;">Vendedor:</span> ${booking.seller}
+                  </div>
+                ` : ''}
               </div>
-              <div style="color: #6b7280;">
-                <strong style="color: #1f2937;">Saída:</strong> ${fmtDate(booking.checkOut)}
+              <div class="schedule-price">
+                <div class="schedule-price-label">Total</div>
+                <div class="schedule-price-value">${fmt(booking.total)}</div>
+                ${booking.pending > 0 ? `
+                  <div class="schedule-pending">
+                    Falta: ${fmt(booking.pending)}
+                  </div>
+                ` : ''}
               </div>
-              <div style="color: #6b7280;">
-                <strong style="color: #1f2937;">Período:</strong> ${days} ${days === 1 ? 'dia' : 'dias'}
-              </div>
-              <div style="color: #6b7280;">
-                <strong style="color: #1f2937;">Pessoas:</strong> ${booking.guests || 0}
-              </div>
-            </div>
-            ${booking.note ? `<div class="schedule-note">Obs: ${booking.note}</div>` : ''}
-            ${booking.seller ? `<div class="schedule-note">Vendedor: ${booking.seller}</div>` : ''}
-            <div style="margin-top: 16px; padding-top: 16px; border-top: 2px solid #f3f4f6; text-align: right;">
-              <div style="font-size: 12px; color: #6b7280;">TOTAL</div>
-              <div style="font-size: 24px; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${fmt(booking.total)}</div>
-              ${booking.pending > 0 ? `<div style="font-size: 13px; color: #f59e0b; font-weight: 600;">Falta: ${fmt(booking.pending)}</div>` : `<div style="font-size: 13px; color: #10b981; font-weight: 600;">✓ Pago</div>`}
             </div>
           </div>
         `;
@@ -792,10 +766,30 @@ function renderScheduleTab() {
   `;
 }
 
+// Render
 function render() {
   document.getElementById('root').innerHTML = `
     <div class="container">
       <div class="card">
         <h1 class="title">Sítio Escola de Cura</h1>
         <div class="tabs">
-          <button class="tab ${state.activeTab === 'bookings' ? '
+          <button class="tab ${state.activeTab === 'bookings' ? 'active' : ''}" onclick="changeTab('bookings')">
+            <i data-lucide="plus"></i>
+            Hospedagens
+          </button>
+          <button class="tab ${state.activeTab === 'schedule' ? 'active' : ''}" onclick="changeTab('schedule')">
+            <i data-lucide="calendar"></i>
+            Agendamentos
+          </button>
+        </div>
+        ${state.activeTab === 'bookings' ? renderBookingsTab() : renderScheduleTab()}
+      </div>
+    </div>
+  `;
+  lucide.createIcons();
+}
+
+document.addEventListener('DOMContentLoaded', loadBookings);
+</script>
+</body>
+</html>
