@@ -154,6 +154,28 @@ body {
     color: white;
 }
 
+.date-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.date-label {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    pointer-events: none;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+.input[type="date"]:focus + .date-label,
+.input[type="date"]:not([value=""]) + .date-label,
+.input[type="date"]:valid + .date-label {
+    opacity: 0;
+}
+
 .btn {
     display: flex;
     align-items: center;
@@ -393,7 +415,7 @@ let state = {
   activeTab: 'bookings',
   bookings: [],
   editingId: null,
-  newBooking: {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: ''}
+  newBooking: {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: '', seller: ''}
 };
 
 // Firestore
@@ -418,11 +440,12 @@ async function handleAdd() {
     total: +b.total || 0,
     paid: +b.paid || 0,
     pending: (+b.total || 0) - (+b.paid || 0),
-    note: b.note || ''
+    note: b.note || '',
+    seller: b.seller || ''
   };
 
   await db.collection("bookings").doc(booking.id).set(booking);
-  state.newBooking = {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: ''};
+  state.newBooking = {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: '', seller: ''};
   loadBookings();
 }
 
@@ -463,7 +486,7 @@ function updateNewBooking(f, v) {
 
 function updateBooking(id, f, v) {
   const b = state.bookings.find(x => x.id === id);
-  if (f === 'name' || f === 'note' || f === 'checkIn' || f === 'checkOut') {
+  if (f === 'name' || f === 'note' || f === 'checkIn' || f === 'checkOut' || f === 'seller') {
     b[f] = v;
   } else {
     b[f] = +v || 0;
@@ -485,12 +508,21 @@ function renderBookingsTab() {
       <h2 class="form-title">Nova Reserva</h2>
       <div class="form-grid">
         <input type="text" class="input" placeholder="Nome" value="${state.newBooking.name}" onchange="updateNewBooking('name', this.value)" />
-        <input type="date" class="input" placeholder="Entrada" value="${state.newBooking.checkIn}" onchange="updateNewBooking('checkIn', this.value)" onfocus="this.showPicker()" />
-        <input type="date" class="input" placeholder="Saída" value="${state.newBooking.checkOut}" onchange="updateNewBooking('checkOut', this.value)" onfocus="this.showPicker()" />
+        <div class="date-wrapper">
+          <input type="date" class="input" value="${state.newBooking.checkIn}" onchange="updateNewBooking('checkIn', this.value)" onfocus="this.showPicker()" />
+          <label class="date-label">Entrada</label>
+        </div>
+        <div class="date-wrapper">
+          <input type="date" class="input" value="${state.newBooking.checkOut}" onchange="updateNewBooking('checkOut', this.value)" onfocus="this.showPicker()" />
+          <label class="date-label">Saída</label>
+        </div>
         <input type="number" class="input" placeholder="Valor total" value="${state.newBooking.total}" onchange="updateNewBooking('total', this.value)" />
         <input type="number" class="input" placeholder="Valor pago" value="${state.newBooking.paid}" onchange="updateNewBooking('paid', this.value)" />
       </div>
-      <input type="text" class="input" style="width: 100%; margin-bottom: 12px;" placeholder="Anotações (opcional)" value="${state.newBooking.note}" onchange="updateNewBooking('note', this.value)" />
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+        <input type="text" class="input" placeholder="Quem vendeu?" value="${state.newBooking.seller}" onchange="updateNewBooking('seller', this.value)" />
+        <input type="text" class="input" placeholder="Anotações (opcional)" value="${state.newBooking.note}" onchange="updateNewBooking('note', this.value)" />
+      </div>
       <button class="btn" onclick="handleAdd()">
         <i data-lucide="plus"></i>
         Adicionar
@@ -507,6 +539,7 @@ function renderBookingsTab() {
             <th>Total</th>
             <th>Pago</th>
             <th>Pendente</th>
+            <th>Vendedor</th>
             <th>Anotações</th>
             <th style="text-align: center;">Ações</th>
           </tr>
@@ -514,7 +547,7 @@ function renderBookingsTab() {
         <tbody>
           ${state.bookings.length === 0 ? `
             <tr>
-              <td colspan="8" class="empty-state">Nenhuma reserva cadastrada</td>
+              <td colspan="9" class="empty-state">Nenhuma reserva cadastrada</td>
             </tr>
           ` : state.bookings.map(booking => `
             <tr>
@@ -549,6 +582,11 @@ function renderBookingsTab() {
                 <span class="${booking.pending > 0 ? 'text-orange' : 'text-green'}">
                   ${fmt(booking.pending)}
                 </span>
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="text" class="input" placeholder="Vendedor" value="${booking.seller || ''}" onchange="updateBooking('${booking.id}', 'seller', this.value)" />
+                ` : `<span class="text-gray-400">${booking.seller || '-'}</span>`}
               </td>
               <td class="text-gray-300">
                 ${state.editingId === booking.id ? `
@@ -631,6 +669,11 @@ function renderScheduleTab() {
                 ${booking.note ? `
                   <div class="schedule-note">
                     <span style="color: #6b7280;">Obs:</span> ${booking.note}
+                  </div>
+                ` : ''}
+                ${booking.seller ? `
+                  <div class="schedule-note">
+                    <span style="color: #6b7280;">Vendedor:</span> ${booking.seller}
                   </div>
                 ` : ''}
               </div>
