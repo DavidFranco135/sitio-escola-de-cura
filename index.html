@@ -46,6 +46,33 @@ tbody tr{border-bottom:1px solid #374151}
 
 <body>
 <div id="root"></div>
+...
+  <!-- TODO O SEU HTML AQUI -->
+  
+  <!-- FIREBASE -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDIQw3v9C7FnRNf8_uuiqbx2NLvVErNke0",
+      authDomain: "sitio-escola-de-cura.firebaseapp.com",
+      projectId: "sitio-escola-de-cura",
+      storageBucket: "sitio-escola-de-cura.firebasestorage.app",
+      messagingSenderId: "21307520694",
+      appId: "1:21307520694:web:7a9af09371d1b4d8b81817",
+      measurementId: "G-60SENL7BW8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    console.log("🔥 Firebase carregado com sucesso");
+  </script>
+
+  <!-- SEUS SCRIPTS ORIGINAIS -->
+  <script src="script.js"></script>
+
 
 <script>
 /* ================= FIREBASE ================= */
