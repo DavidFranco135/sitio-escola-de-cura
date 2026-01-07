@@ -13,7 +13,6 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <style>
-/* ===== SEU CSS ORIGINAL (INALTERADO) ===== */
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;background:linear-gradient(to bottom right,#1a1a1a,#0d0d0d);min-height:100vh;padding:24px;color:#e5e7eb}
 .container{max-width:1280px;margin:0 auto}
@@ -47,93 +46,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto;background:l
 </div>
 
 <script>
-/* ===== FIREBASE CONFIG ===== */
+/* ================= FIREBASE CONFIG ================= */
 const firebaseConfig = {
   apiKey: "SUA_API_KEY",
-  authDomain: "SEU_PROJETO.firebaseapp.com",
-  projectId: "SEU_PROJETO",
-  storageBucket: "SEU_PROJETO.appspot.com",
-  messagingSenderId: "XXXX",
-  appId: "XXXX"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-/* ===== AUTH ===== */
-function login() {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-  auth.signInWithEmailAndPassword(email, password)
-    .catch(e => document.getElementById('loginError').innerText = e.message);
-}
-
-auth.onAuthStateChanged(user => {
-  if (user) {
-    document.getElementById('loginCard').classList.add('hidden');
-    document.getElementById('app').classList.remove('hidden');
-    loadBookings();
-  } else {
-    document.getElementById('loginCard').classList.remove('hidden');
-    document.getElementById('app').classList.add('hidden');
-  }
-});
-
-/* ===== STATE ===== */
-let state = {
-  activeTab: 'bookings',
-  bookings: []
-};
-
-/* ===== FIRESTORE ===== */
-async function loadBookings() {
-  const snap = await db.collection('bookings').orderBy('checkIn').get();
-  state.bookings = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-  render();
-}
-
-function addBooking(data) {
-  db.collection('bookings').add(data);
-}
-
-/* ===== RENDER ===== */
-function render() {
-  document.getElementById('root').innerHTML = `
-    <div class="container">
-      <div class="card">
-        <h1 class="title">Sítio Escola de Cura</h1>
-
-        <div class="tabs">
-          <button class="tab ${state.activeTab==='bookings'?'active':''}" onclick="state.activeTab='bookings';render()">Hospedagens</button>
-          <button class="tab ${state.activeTab==='schedule'?'active':''}" onclick="state.activeTab='schedule';render()">Agendamentos</button>
-        </div>
-
-        ${state.activeTab === 'bookings' ? renderBookings() : renderSchedule()}
-      </div>
-    </div>
-  `;
-  lucide.createIcons();
-}
-
-function renderBookings() {
-  return `
-    <button class="btn" onclick="addBooking({
-      name:'Teste',
-      checkIn:'2024-01-01',
-      checkOut:'2024-01-02',
-      total:100,
-      paid:50,
-      pending:50
-    })">Adicionar teste</button>
-  `;
-}
-
-function renderSchedule() {
-  return `<p>Agendamentos (${state.bookings.length})</p>`;
-}
-</script>
-</body>
-</html>
+  authDomain
