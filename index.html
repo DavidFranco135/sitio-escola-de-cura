@@ -505,7 +505,7 @@ function updateBooking(id, f, v) {
 }
 
 function fmt(v) {
-  return `R$ ${v.toFixed(2)}`;
+  return `R$ ${Math.round(v).toLocaleString('pt-BR')}`;
 }
 
 function fmtDate(d) {
