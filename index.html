@@ -560,12 +560,18 @@ function renderBookingsTab() {
               </td>
               <td class="text-gray-300">
                 ${state.editingId === booking.id ? `
-                  <input type="date" class="input" value="${booking.checkIn}" onchange="updateBooking('${booking.id}', 'checkIn', this.value)" />
+                  <div class="date-wrapper">
+                    <input type="date" class="input" value="${booking.checkIn}" onchange="updateBooking('${booking.id}', 'checkIn', this.value)" />
+                    <label class="date-label">Entrada</label>
+                  </div>
                 ` : fmtDate(booking.checkIn)}
               </td>
               <td class="text-gray-300">
                 ${state.editingId === booking.id ? `
-                  <input type="date" class="input" value="${booking.checkOut}" onchange="updateBooking('${booking.id}', 'checkOut', this.value)" />
+                  <div class="date-wrapper">
+                    <input type="date" class="input" value="${booking.checkOut}" onchange="updateBooking('${booking.id}', 'checkOut', this.value)" />
+                    <label class="date-label">Saída</label>
+                  </div>
                 ` : fmtDate(booking.checkOut)}
               </td>
               <td class="text-gray-300">
