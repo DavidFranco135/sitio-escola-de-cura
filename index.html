@@ -754,6 +754,185 @@ function fmtDate(d) {
   return new Date(d + 'T00:00:00').toLocaleDateString('pt-BR');
 }
 
+// Render Bookings Tab
+function renderBookingsTab() {
+  return `
+    <div class="form-container">
+      <h2 class="form-title">Nova Reserva</h2>
+      <div class="form-grid">
+        <input type="text" class="input" placeholder="Nome" value="${state.newBooking.name}" onchange="updateNewBooking('name', this.value)" />
+        <div class="date-wrapper">
+          <input type="date" class="input" value="${state.newBooking.checkIn}" onchange="updateNewBooking('checkIn', this.value)" />
+          <label class="date-label">Entrada</label>
+        </div>
+        <div class="date-wrapper">
+          <input type="date" class="input" value="${state.newBooking.checkOut}" onchange="updateNewBooking('checkOut', this.value)" />
+          <label class="date-label">Saída</label>
+        </div>
+        <input type="number" class="input" placeholder="Qtd. Pessoas" value="${state.newBooking.guests}" onchange="updateNewBooking('guests', this.value)" />
+        <input type="number" class="input" placeholder="Valor total" value="${state.newBooking.total}" onchange="updateNewBooking('total', this.value)" />
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+        <input type="number" class="input" placeholder="Valor pago" value="${state.newBooking.paid}" onchange="updateNewBooking('paid', this.value)" />
+        <input type="text" class="input" placeholder="Quem vendeu?" value="${state.newBooking.seller}" onchange="updateNewBooking('seller', this.value)" />
+        <input type="text" class="input" placeholder="Anotações" value="${state.newBooking.note}" onchange="updateNewBooking('note', this.value)" />
+      </div>
+      <button class="btn" onclick="handleAdd()">
+        <i data-lucide="plus"></i>
+        Adicionar
+      </button>
+    </div>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Entrada</th>
+            <th>Saída</th>
+            <th>Pessoas</th>
+            <th>Total</th>
+            <th>Pago</th>
+            <th>Pendente</th>
+            <th>Vendedor</th>
+            <th>Anotações</th>
+            <th style="text-align: center;">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${state.bookings.length === 0 ? `
+            <tr><td colspan="10" class="empty-state">Nenhuma reserva cadastrada</td></tr>
+          ` : state.bookings.map(booking => `
+            <tr>
+              <td>
+                ${state.editingId === booking.id ? `
+                  <input type="text" class="input" value="${booking.name}" onchange="updateBooking('${booking.id}', 'name', this.value)" />
+                ` : `<span class="text-gray-100" style="font-weight: 600;">${booking.name}</span>`}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <div class="date-wrapper">
+                    <input type="date" class="input" value="${booking.checkIn}" onchange="updateBooking('${booking.id}', 'checkIn', this.value)" />
+                    <label class="date-label">Entrada</label>
+                  </div>
+                ` : fmtDate(booking.checkIn)}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <div class="date-wrapper">
+                    <input type="date" class="input" value="${booking.checkOut}" onchange="updateBooking('${booking.id}', 'checkOut', this.value)" />
+                    <label class="date-label">Saída</label>
+                  </div>
+                ` : fmtDate(booking.checkOut)}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="number" class="input" style="width: 60px;" value="${booking.guests || 0}" onchange="updateBooking('${booking.id}', 'guests', this.value)" />
+                ` : (booking.guests || 0)}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="number" class="input" style="width: 80px;" value="${booking.total}" onchange="updateBooking('${booking.id}', 'total', this.value)" />
+                ` : fmt(booking.total)}
+              </td>
+              <td class="text-green">
+                ${state.editingId === booking.id ? `
+                  <input type="number" class="input" style="width: 80px;" value="${booking.paid}" onchange="updateBooking('${booking.id}', 'paid', this.value)" />
+                ` : fmt(booking.paid)}
+              </td>
+              <td>
+                <span class="${booking.pending > 0 ? 'text-orange' : 'text-green'}">
+                  ${fmt(booking.pending)}
+                </span>
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="text" class="input" value="${booking.seller || ''}" onchange="updateBooking('${booking.id}', 'seller', this.value)" />
+                ` : `<span class="text-gray-400">${booking.seller || '-'}</span>`}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="text" class="input" value="${booking.note || ''}" onchange="updateBooking('${booking.id}', 'note', this.value)" />
+                ` : `<span class="text-gray-400">${booking.note || '-'}</span>`}
+              </td>
+              <td>
+                <div class="actions">
+                  ${state.editingId === booking.id ? `
+                    <button class="icon-btn green" onclick="handleSaveEdit('${booking.id}')" title="Salvar">
+                      <i data-lucide="check"></i>
+                    </button>
+                    <button class="icon-btn gray" onclick="handleCancelEdit()" title="Cancelar">
+                      <i data-lucide="x"></i>
+                    </button>
+                  ` : `
+                    <button class="icon-btn blue" onclick="handleEdit('${booking.id}')" title="Editar">
+                      <i data-lucide="edit-2"></i>
+                    </button>
+                    <button class="icon-btn red" onclick="handleDelete('${booking.id}')" title="Excluir">
+                      <i data-lucide="trash-2"></i>
+                    </button>
+                  `}
+                </div>
+              </td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+// Render Schedule Tab
+function renderScheduleTab() {
+  if (state.bookings.length === 0) {
+    return `<div class="empty-state" style="padding: 64px;">Nenhum agendamento cadastrado ainda</div>`;
+  }
+
+  const sortedBookings = [...state.bookings].sort((a, b) => {
+    const dateA = new Date(a.checkIn);
+    const dateB = new Date(b.checkIn);
+    return dateA - dateB;
+  });
+
+  return `
+    <h2 class="schedule-title">Calendário de Agendamentos</h2>
+    <div class="schedule-container">
+      ${sortedBookings.map(booking => {
+        const checkIn = new Date(booking.checkIn + 'T00:00:00');
+        const checkOut = new Date(booking.checkOut + 'T00:00:00');
+        const days = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+        
+        return `
+          <div class="schedule-card">
+            <h3 class="schedule-name">${booking.name}</h3>
+            <div class="schedule-grid">
+              <div style="color: #6b7280;">
+                <strong style="color: #1f2937;">Entrada:</strong> ${fmtDate(booking.checkIn)}
+              </div>
+              <div style="color: #6b7280;">
+                <strong style="color: #1f2937;">Saída:</strong> ${fmtDate(booking.checkOut)}
+              </div>
+              <div style="color: #6b7280;">
+                <strong style="color: #1f2937;">Período:</strong> ${days} ${days === 1 ? 'dia' : 'dias'}
+              </div>
+              <div style="color: #6b7280;">
+                <strong style="color: #1f2937;">Pessoas:</strong> ${booking.guests || 0}
+              </div>
+            </div>
+            ${booking.note ? `<div class="schedule-note">Obs: ${booking.note}</div>` : ''}
+            ${booking.seller ? `<div class="schedule-note">Vendedor: ${booking.seller}</div>` : ''}
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 2px solid #f3f4f6; text-align: right;">
+              <div style="font-size: 12px; color: #6b7280;">TOTAL</div>
+              <div style="font-size: 24px; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${fmt(booking.total)}</div>
+              ${booking.pending > 0 ? `<div style="font-size: 13px; color: #f59e0b; font-weight: 600;">Falta: ${fmt(booking.pending)}</div>` : `<div style="font-size: 13px; color: #10b981; font-weight: 600;">✓ Pago</div>`}
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
+}
+
 function renderBookingsTab() {
   return `
     <div class="form-container">
