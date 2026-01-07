@@ -139,6 +139,21 @@ body {
     color: #9ca3af;
 }
 
+/* Estilo para placeholder dos inputs de data */
+.input[type="date"]::-webkit-datetime-edit-text,
+.input[type="date"]::-webkit-datetime-edit-month-field,
+.input[type="date"]::-webkit-datetime-edit-day-field,
+.input[type="date"]::-webkit-datetime-edit-year-field {
+    color: #9ca3af;
+}
+
+.input[type="date"]:focus::-webkit-datetime-edit-text,
+.input[type="date"]:focus::-webkit-datetime-edit-month-field,
+.input[type="date"]:focus::-webkit-datetime-edit-day-field,
+.input[type="date"]:focus::-webkit-datetime-edit-year-field {
+    color: white;
+}
+
 .btn {
     display: flex;
     align-items: center;
@@ -470,8 +485,8 @@ function renderBookingsTab() {
       <h2 class="form-title">Nova Reserva</h2>
       <div class="form-grid">
         <input type="text" class="input" placeholder="Nome" value="${state.newBooking.name}" onchange="updateNewBooking('name', this.value)" />
-        <input type="date" class="input" value="${state.newBooking.checkIn}" onchange="updateNewBooking('checkIn', this.value)" />
-        <input type="date" class="input" value="${state.newBooking.checkOut}" onchange="updateNewBooking('checkOut', this.value)" />
+        <input type="date" class="input" placeholder="Entrada" value="${state.newBooking.checkIn}" onchange="updateNewBooking('checkIn', this.value)" onfocus="this.showPicker()" />
+        <input type="date" class="input" placeholder="Saída" value="${state.newBooking.checkOut}" onchange="updateNewBooking('checkOut', this.value)" onfocus="this.showPicker()" />
         <input type="number" class="input" placeholder="Valor total" value="${state.newBooking.total}" onchange="updateNewBooking('total', this.value)" />
         <input type="number" class="input" placeholder="Valor pago" value="${state.newBooking.paid}" onchange="updateNewBooking('paid', this.value)" />
       </div>
@@ -578,10 +593,15 @@ function renderScheduleTab() {
     `;
   }
 
+  // Ordenar por data de entrada (checkIn)
+  const sortedBookings = [...state.bookings].sort((a, b) => {
+    return new Date(a.checkIn) - new Date(b.checkIn);
+  });
+
   return `
     <h2 class="schedule-title">Calendário de Agendamentos</h2>
     <div class="schedule-container">
-      ${state.bookings.map(booking => {
+      ${sortedBookings.map(booking => {
         const checkIn = new Date(booking.checkIn + 'T00:00:00');
         const checkOut = new Date(booking.checkOut + 'T00:00:00');
         const days = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
