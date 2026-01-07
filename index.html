@@ -269,6 +269,11 @@ td {
     font-weight: 500;
 }
 
+.text-blue {
+    color: #60a5fa;
+    font-weight: 500;
+}
+
 .actions {
     display: flex;
     gap: 8px;
@@ -555,6 +560,22 @@ function fmtDate(d) {
   return new Date(d + 'T00:00:00').toLocaleDateString('pt-BR');
 }
 
+// Função para determinar o status do evento
+function getEventStatus(checkInDate, checkOutDate) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const checkIn = new Date(checkInDate + 'T00:00:00');
+  const checkOut = new Date(checkOutDate + 'T00:00:00');
+  
+  if (checkOut < today) {
+    return { status: 'Realizado', color: 'text-gray-400' };
+  } else if (checkIn <= today && checkOut >= today) {
+    return { status: 'Em andamento', color: 'text-blue' };
+  } else {
+    return { status: 'Agendado', color: 'text-green' };
+  }
+}
+
 // Render Bookings
 function renderBookingsTab() {
   return `
@@ -595,6 +616,7 @@ function renderBookingsTab() {
             <th>Total</th>
             <th>Pago</th>
             <th>Pendente</th>
+            <th>Status</th>
             <th>Vendedor</th>
             <th>Anotações</th>
             <th style="text-align: center;">Ações</th>
@@ -603,9 +625,11 @@ function renderBookingsTab() {
         <tbody>
           ${state.bookings.length === 0 ? `
             <tr>
-              <td colspan="10" class="empty-state">Nenhuma reserva cadastrada</td>
+              <td colspan="11" class="empty-state">Nenhuma reserva cadastrada</td>
             </tr>
-          ` : state.bookings.map(booking => `
+          ` : state.bookings.map(booking => {
+            const eventStatus = getEventStatus(booking.checkIn, booking.checkOut);
+            return `
             <tr>
               <td>
                 ${state.editingId === booking.id ? `
@@ -650,6 +674,11 @@ function renderBookingsTab() {
                   ${fmt(booking.pending)}
                 </span>
               </td>
+              <td>
+                <span class="${eventStatus.color}" style="font-size: 13px; font-weight: 500;">
+                  ${eventStatus.status}
+                </span>
+              </td>
               <td class="text-gray-300">
                 ${state.editingId === booking.id ? `
                   <input type="text" class="input" placeholder="Vendedor" value="${booking.seller || ''}" onchange="updateBooking('${booking.id}', 'seller', this.value)" />
@@ -680,7 +709,8 @@ function renderBookingsTab() {
                 </div>
               </td>
             </tr>
-          `).join('')}
+            `;
+          }).join('')}
         </tbody>
       </table>
     </div>
@@ -712,6 +742,7 @@ function renderScheduleTab() {
         const checkIn = new Date(booking.checkIn + 'T00:00:00');
         const checkOut = new Date(booking.checkOut + 'T00:00:00');
         const days = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+        const eventStatus = getEventStatus(booking.checkIn, booking.checkOut);
         
         return `
           <div class="schedule-card">
@@ -730,6 +761,12 @@ function renderScheduleTab() {
                   </div>
                   <div class="text-gray-300">
                     <span class="text-gray-400">Pessoas:</span> ${booking.guests || 0}
+                  </div>
+                  <div class="text-gray-300">
+                    <span class="text-gray-400">Status:</span> 
+                    <span class="${eventStatus.color}">
+                      ${eventStatus.status}
+                    </span>
                   </div>
                   <div class="text-gray-300">
                     <span class="text-gray-400">Status Pgto:</span> 
