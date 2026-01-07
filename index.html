@@ -443,19 +443,15 @@ async function handleAdd() {
   }
 
   // Verificar se as datas estão disponíveis
-  const newCheckIn = new Date(b.checkIn);
-  const newCheckOut = new Date(b.checkOut);
+  const newCheckIn = new Date(b.checkIn + 'T00:00:00');
+  const newCheckOut = new Date(b.checkOut + 'T00:00:00');
 
   const conflict = state.bookings.find(booking => {
-    const existingCheckIn = new Date(booking.checkIn);
-    const existingCheckOut = new Date(booking.checkOut);
+    const existingCheckIn = new Date(booking.checkIn + 'T00:00:00');
+    const existingCheckOut = new Date(booking.checkOut + 'T00:00:00');
 
-    // Verifica se há sobreposição de datas
-    return (
-      (newCheckIn >= existingCheckIn && newCheckIn < existingCheckOut) ||
-      (newCheckOut > existingCheckIn && newCheckOut <= existingCheckOut) ||
-      (newCheckIn <= existingCheckIn && newCheckOut >= existingCheckOut)
-    );
+    // Verifica se há sobreposição de datas (qualquer interseção)
+    return !(newCheckOut <= existingCheckIn || newCheckIn >= existingCheckOut);
   });
 
   if (conflict) {
@@ -502,21 +498,17 @@ async function handleSaveEdit(id) {
   const b = state.bookings.find(x => x.id === id);
   
   // Verificar se as novas datas estão disponíveis (excluindo a própria reserva)
-  const newCheckIn = new Date(b.checkIn);
-  const newCheckOut = new Date(b.checkOut);
+  const newCheckIn = new Date(b.checkIn + 'T00:00:00');
+  const newCheckOut = new Date(b.checkOut + 'T00:00:00');
 
   const conflict = state.bookings.find(booking => {
     if (booking.id === id) return false; // Ignora a própria reserva
     
-    const existingCheckIn = new Date(booking.checkIn);
-    const existingCheckOut = new Date(booking.checkOut);
+    const existingCheckIn = new Date(booking.checkIn + 'T00:00:00');
+    const existingCheckOut = new Date(booking.checkOut + 'T00:00:00');
 
-    // Verifica se há sobreposição de datas
-    return (
-      (newCheckIn >= existingCheckIn && newCheckIn < existingCheckOut) ||
-      (newCheckOut > existingCheckIn && newCheckOut <= existingCheckOut) ||
-      (newCheckIn <= existingCheckIn && newCheckOut >= existingCheckOut)
-    );
+    // Verifica se há sobreposição de datas (qualquer interseção)
+    return !(newCheckOut <= existingCheckIn || newCheckIn >= existingCheckOut);
   });
 
   if (conflict) {
