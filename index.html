@@ -442,6 +442,27 @@ async function handleAdd() {
     return;
   }
 
+  // Verificar se as datas estão disponíveis
+  const newCheckIn = new Date(b.checkIn);
+  const newCheckOut = new Date(b.checkOut);
+
+  const conflict = state.bookings.find(booking => {
+    const existingCheckIn = new Date(booking.checkIn);
+    const existingCheckOut = new Date(booking.checkOut);
+
+    // Verifica se há sobreposição de datas
+    return (
+      (newCheckIn >= existingCheckIn && newCheckIn < existingCheckOut) ||
+      (newCheckOut > existingCheckIn && newCheckOut <= existingCheckOut) ||
+      (newCheckIn <= existingCheckIn && newCheckOut >= existingCheckOut)
+    );
+  });
+
+  if (conflict) {
+    alert(`Data indisponível! Já existe uma reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`);
+    return;
+  }
+
   const booking = {
     id: 'booking_' + Date.now(),
     name: b.name,
@@ -479,6 +500,30 @@ function handleCancelEdit() {
 
 async function handleSaveEdit(id) {
   const b = state.bookings.find(x => x.id === id);
+  
+  // Verificar se as novas datas estão disponíveis (excluindo a própria reserva)
+  const newCheckIn = new Date(b.checkIn);
+  const newCheckOut = new Date(b.checkOut);
+
+  const conflict = state.bookings.find(booking => {
+    if (booking.id === id) return false; // Ignora a própria reserva
+    
+    const existingCheckIn = new Date(booking.checkIn);
+    const existingCheckOut = new Date(booking.checkOut);
+
+    // Verifica se há sobreposição de datas
+    return (
+      (newCheckIn >= existingCheckIn && newCheckIn < existingCheckOut) ||
+      (newCheckOut > existingCheckIn && newCheckOut <= existingCheckOut) ||
+      (newCheckIn <= existingCheckIn && newCheckOut >= existingCheckOut)
+    );
+  });
+
+  if (conflict) {
+    alert(`Data indisponível! Já existe uma reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`);
+    return;
+  }
+
   b.pending = b.total - b.paid;
   await db.collection("bookings").doc(id).set(b);
   state.editingId = null;
