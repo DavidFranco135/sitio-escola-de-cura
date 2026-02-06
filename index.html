@@ -17,523 +17,523 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-    min-height: 100vh;
-    padding: 16px;
-    color: #e2e8f0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    min-height: 100vh;
+    padding: 16px;
+    color: #e2e8f0;
 }
 
 @media (min-width: 768px) {
-    body {
-        padding: 32px;
-    }
+    body {
+        padding: 32px;
+    }
 }
 
 .container {
-    max-width: 1400px;
-    margin: 0 auto;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .glass-effect {
-    background: rgba(30, 41, 59, 0.8);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(148, 163, 184, 0.1);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .card {
-    background: rgba(30, 41, 59, 0.8);
-    backdrop-filter: blur(20px);
-    border-radius: 24px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    padding: 24px;
-    margin-bottom: 24px;
-    border: 1px solid rgba(16, 185, 129, 0.2);
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    padding: 24px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 @media (min-width: 768px) {
-    .card {
-        padding: 40px;
-    }
+    .card {
+        padding: 40px;
+    }
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 32px;
 }
 
 .header-icon {
-    padding: 16px;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+    padding: 16px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
 }
 
 .header-content h1 {
-    font-size: 32px;
-    font-weight: 800;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 4px;
+    font-size: 32px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
 }
 
 @media (min-width: 768px) {
-    .header-content h1 {
-        font-size: 40px;
-    }
+    .header-content h1 {
+        font-size: 40px;
+    }
 }
 
 .header-content p {
-    color: #94a3b8;
-    font-weight: 600;
-    font-size: 16px;
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 16px;
 }
 
 .tabs {
-    display: flex;
-    gap: 12px;
-    padding: 8px;
-    background: rgba(15, 23, 42, 0.6);
-    border-radius: 16px;
-    margin-bottom: 32px;
-    border: 1px solid rgba(148, 163, 184, 0.1);
+    display: flex;
+    gap: 12px;
+    padding: 8px;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 16px;
+    margin-bottom: 32px;
+    border: 1px solid rgba(148, 163, 184, 0.1);
 }
 
 .tab {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 24px;
-    font-weight: 600;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    color: #94a3b8;
-    transition: all 0.3s;
-    border-radius: 12px;
-    flex: 1;
-    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-weight: 600;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #94a3b8;
+    transition: all 0.3s;
+    border-radius: 12px;
+    flex: 1;
+    justify-content: center;
 }
 
 .tab:hover {
-    background: rgba(16, 185, 129, 0.15);
-    color: #10b981;
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
 }
 
 .tab.active {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
-    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
 }
 
 .form-container {
-    background: rgba(15, 23, 42, 0.6);
-    border-radius: 20px;
-    padding: 24px;
-    margin-bottom: 32px;
-    border: 2px solid rgba(16, 185, 129, 0.3);
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 32px;
+    border: 2px solid rgba(16, 185, 129, 0.3);
 }
 
 .form-title {
-    font-weight: 700;
-    font-size: 20px;
-    color: #10b981;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #10b981;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .form-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
 }
 
 @media (min-width: 768px) {
-    .form-grid {
-        grid-template-columns: repeat(5, 1fr);
-    }
+    .form-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
 }
 
 .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .input-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .input {
-    padding: 14px 16px;
-    background: rgba(15, 23, 42, 0.8);
-    color: #e2e8f0;
-    border: 2px solid rgba(148, 163, 184, 0.2);
-    border-radius: 12px;
-    font-size: 15px;
-    font-weight: 500;
-    width: 100%;
-    transition: all 0.3s;
+    padding: 14px 16px;
+    background: rgba(15, 23, 42, 0.8);
+    color: #e2e8f0;
+    border: 2px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    width: 100%;
+    transition: all 0.3s;
 }
 
 .input:focus {
-    outline: none;
-    border-color: #10b981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
-    background: rgba(15, 23, 42, 0.95);
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    background: rgba(15, 23, 42, 0.95);
 }
 
 .input::placeholder {
-    color: #64748b;
+    color: #64748b;
 }
 
 .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 16px 32px;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
-    border: none;
-    border-radius: 14px;
-    font-weight: 700;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s;
-    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
 }
 
 .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
 }
 
 .table-container {
-    overflow-x: auto;
-    border-radius: 16px;
-    background: rgba(15, 23, 42, 0.6);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(148, 163, 184, 0.1);
+    overflow-x: auto;
+    border-radius: 16px;
+    background: rgba(15, 23, 42, 0.6);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(148, 163, 184, 0.1);
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 thead tr {
-    background: rgba(16, 185, 129, 0.1);
-    border-bottom: 2px solid rgba(16, 185, 129, 0.3);
+    background: rgba(16, 185, 129, 0.1);
+    border-bottom: 2px solid rgba(16, 185, 129, 0.3);
 }
 
 th {
-    text-align: left;
-    padding: 16px 12px;
-    font-weight: 700;
-    color: #059669;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
+    text-align: left;
+    padding: 16px 12px;
+    font-weight: 700;
+    color: #059669;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
 }
 
 tbody tr {
-    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-    transition: all 0.2s;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    transition: all 0.2s;
 }
 
 tbody tr:hover {
-    background: rgba(16, 185, 129, 0.05);
+    background: rgba(16, 185, 129, 0.05);
 }
 
 td {
-    padding: 16px 12px;
-    font-size: 14px;
-    font-weight: 500;
+    padding: 16px 12px;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .text-gray-100 {
-    color: #f1f5f9;
+    color: #f1f5f9;
 }
 
 .text-gray-300 {
-    color: #cbd5e1;
+    color: #cbd5e1;
 }
 
 .text-gray-400 {
-    color: #94a3b8;
+    color: #94a3b8;
 }
 
 .text-green {
-    color: #10b981;
-    font-weight: 600;
+    color: #10b981;
+    font-weight: 600;
 }
 
 .text-orange {
-    color: #f59e0b;
-    font-weight: 600;
+    color: #f59e0b;
+    font-weight: 600;
 }
 
 .text-blue {
-    color: #3b82f6;
-    font-weight: 600;
+    color: #3b82f6;
+    font-weight: 600;
 }
 
 .actions {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
 }
 
 .icon-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 8px;
-    transition: all 0.2s;
-    border-radius: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.2s;
+    border-radius: 8px;
 }
 
 .icon-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .icon-btn.blue {
-    color: #3b82f6;
-    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
 }
 
 .icon-btn.blue:hover {
-    background: rgba(59, 130, 246, 0.2);
+    background: rgba(59, 130, 246, 0.2);
 }
 
 .icon-btn.red {
-    color: #ef4444;
-    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
 }
 
 .icon-btn.red:hover {
-    background: rgba(239, 68, 68, 0.2);
+    background: rgba(239, 68, 68, 0.2);
 }
 
 .icon-btn.green {
-    color: #10b981;
-    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
 }
 
 .icon-btn.green:hover {
-    background: rgba(16, 185, 129, 0.2);
+    background: rgba(16, 185, 129, 0.2);
 }
 
 .icon-btn.gray {
-    color: #6b7280;
-    background: rgba(107, 114, 128, 0.1);
+    color: #6b7280;
+    background: rgba(107, 114, 128, 0.1);
 }
 
 .icon-btn.gray:hover {
-    background: rgba(107, 114, 128, 0.2);
+    background: rgba(107, 114, 128, 0.2);
 }
 
 .empty-state {
-    text-align: center;
-    padding: 48px;
-    color: #64748b;
-    font-weight: 500;
+    text-align: center;
+    padding: 48px;
+    color: #64748b;
+    font-weight: 500;
 }
 
 .schedule-container {
-    display: grid;
-    gap: 20px;
+    display: grid;
+    gap: 20px;
 }
 
 @media (min-width: 1024px) {
-    .schedule-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .schedule-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .schedule-title {
-    font-size: 28px;
-    font-weight: 800;
-    color: #059669;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #059669;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .schedule-card {
-    background: rgba(30, 41, 59, 0.8);
-    border-radius: 20px;
-    padding: 24px;
-    border-left: 6px solid #10b981;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s;
-    border: 1px solid rgba(148, 163, 184, 0.1);
+    background: rgba(30, 41, 59, 0.8);
+    border-radius: 20px;
+    padding: 24px;
+    border-left: 6px solid #10b981;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s;
+    border: 1px solid rgba(148, 163, 184, 0.1);
 }
 
 .schedule-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-    border-left-color: #10b981;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+    border-left-color: #10b981;
 }
 
 .schedule-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    flex-wrap: wrap;
-    gap: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 .schedule-content {
-    flex: 1;
-    min-width: 250px;
+    flex: 1;
+    min-width: 250px;
 }
 
 .schedule-name {
-    font-size: 20px;
-    font-weight: 700;
-    color: #f1f5f9;
-    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #f1f5f9;
+    margin-bottom: 16px;
 }
 
 .schedule-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    font-size: 14px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-    .schedule-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .schedule-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .schedule-grid-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .schedule-note {
-    margin-top: 12px;
-    padding: 12px;
-    background: rgba(15, 23, 42, 0.6);
-    border-radius: 10px;
-    font-size: 14px;
-    color: #cbd5e1;
-    border-left: 3px solid #10b981;
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 10px;
+    font-size: 14px;
+    color: #cbd5e1;
+    border-left: 3px solid #10b981;
 }
 
 .schedule-price {
-    text-align: right;
-    padding: 16px;
-    background: rgba(16, 185, 129, 0.1);
-    border-radius: 16px;
-    min-width: 140px;
-    border: 1px solid rgba(16, 185, 129, 0.2);
+    text-align: right;
+    padding: 16px;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 16px;
+    min-width: 140px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .schedule-price-label {
-    font-size: 12px;
-    color: #94a3b8;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-size: 12px;
+    color: #94a3b8;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .schedule-price-value {
-    font-size: 24px;
-    font-weight: 800;
-    color: #10b981;
-    margin-top: 4px;
+    font-size: 24px;
+    font-weight: 800;
+    color: #10b981;
+    margin-top: 4px;
 }
 
 .schedule-pending {
-    font-size: 13px;
-    color: #f59e0b;
-    margin-top: 8px;
-    font-weight: 600;
+    font-size: 13px;
+    color: #f59e0b;
+    margin-top: 8px;
+    font-weight: 600;
 }
 
 .empty-schedule {
-    text-align: center;
-    padding: 80px 20px;
-    color: #64748b;
+    text-align: center;
+    padding: 80px 20px;
+    color: #64748b;
 }
 
 .empty-schedule i {
-    opacity: 0.3;
-    margin-bottom: 16px;
+    opacity: 0.3;
+    margin-bottom: 16px;
 }
 
 .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .badge.green {
-    background: rgba(16, 185, 129, 0.2);
-    color: #10b981;
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 .badge.orange {
-    background: rgba(245, 158, 11, 0.2);
-    color: #f59e0b;
-    border: 1px solid rgba(245, 158, 11, 0.3);
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
 .badge.blue {
-    background: rgba(59, 130, 246, 0.2);
-    color: #3b82f6;
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    background: rgba(59, 130, 246, 0.2);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .badge.gray {
-    background: rgba(148, 163, 184, 0.2);
-    color: #94a3b8;
-    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: rgba(148, 163, 184, 0.2);
+    color: #94a3b8;
+    border: 1px solid rgba(148, 163, 184, 0.3);
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .animate-fade-in {
-    animation: fadeIn 0.5s ease-out;
+    animation: fadeIn 0.5s ease-out;
 }
 </style>
 </head>
@@ -542,443 +542,451 @@ td {
 <div id="root"></div>
 
 <script>
-// Firebase
-firebase.initializeApp({
-  apiKey: "AIzaSyDIQw3v9C7FnRNf8_uuiqbx2NLvVErNke0",
-  authDomain: "sitio-escola-de-cura.firebaseapp.com",
-  projectId: "sitio-escola-de-cura"
-});
+// Firebase Configuração Completa para Produção
+const firebaseConfig = {
+  apiKey: "AIzaSyDIQw3v9C7FnRNf8_uuiqbx2NLvVErNke0",
+  authDomain: "sitio-escola-de-cura.firebaseapp.com",
+  projectId: "sitio-escola-de-cura",
+  storageBucket: "sitio-escola-de-cura.appspot.com",
+  messagingSenderId: "56557452368",
+  appId: "1:56557452368:web:1e403487f5a6f296332766"
+};
+
+// Inicialização
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
 const db = firebase.firestore();
 
 // Estado
 let state = {
-  activeTab: 'bookings',
-  bookings: [],
-  editingId: null,
-  newBooking: {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: '', seller: '', guests: ''}
+  activeTab: 'bookings',
+  bookings: [],
+  editingId: null,
+  newBooking: {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: '', seller: '', guests: ''}
 };
 
 // Firestore
 async function loadBookings() {
-  const snap = await db.collection("bookings").orderBy("checkIn").get();
-  state.bookings = snap.docs.map(d => d.data());
-  render();
+  const snap = await db.collection("bookings").orderBy("checkIn").get();
+  state.bookings = snap.docs.map(d => d.data());
+  render();
 }
 
 async function handleAdd() {
-  const b = state.newBooking;
-  if (!b.name || !b.checkIn || !b.checkOut) {
-    alert('Preencha nome e datas');
-    return;
-  }
+  const b = state.newBooking;
+  if (!b.name || !b.checkIn || !b.checkOut) {
+    alert('Preencha nome e datas');
+    return;
+  }
 
-  const newCheckIn = new Date(b.checkIn + 'T00:00:00');
-  const newCheckOut = new Date(b.checkOut + 'T00:00:00');
+  const newCheckIn = new Date(b.checkIn + 'T00:00:00');
+  const newCheckOut = new Date(b.checkOut + 'T00:00:00');
 
-  const conflict = state.bookings.find(booking => {
-    const existingCheckIn = new Date(booking.checkIn + 'T00:00:00');
-    const existingCheckOut = new Date(booking.checkOut + 'T00:00:00');
-    return !(newCheckOut <= existingCheckIn || newCheckIn >= existingCheckOut);
-  });
+  const conflict = state.bookings.find(booking => {
+    const existingCheckIn = new Date(booking.checkIn + 'T00:00:00');
+    const existingCheckOut = new Date(booking.checkOut + 'T00:00:00');
+    return !(newCheckOut <= existingCheckIn || newCheckIn >= existingCheckOut);
+  });
 
-  if (conflict) {
-    alert(`Data indisponível! Já existe uma reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`);
-    return;
-  }
+  if (conflict) {
+    alert(`Data indisponível! Já existe uma reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`);
+    return;
+  }
 
-  const booking = {
-    id: 'booking_' + Date.now(),
-    name: b.name,
-    checkIn: b.checkIn,
-    checkOut: b.checkOut,
-    total: +b.total || 0,
-    paid: +b.paid || 0,
-    pending: (+b.total || 0) - (+b.paid || 0),
-    note: b.note || '',
-    seller: b.seller || '',
-    guests: +b.guests || 0
-  };
+  const booking = {
+    id: 'booking_' + Date.now(),
+    name: b.name,
+    checkIn: b.checkIn,
+    checkOut: b.checkOut,
+    total: +b.total || 0,
+    paid: +b.paid || 0,
+    pending: (+b.total || 0) - (+b.paid || 0),
+    note: b.note || '',
+    seller: b.seller || '',
+    guests: +b.guests || 0
+  };
 
-  await db.collection("bookings").doc(booking.id).set(booking);
-  state.newBooking = {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: '', seller: '', guests: ''};
-  loadBookings();
+  await db.collection("bookings").doc(booking.id).set(booking);
+  state.newBooking = {name: '', checkIn: '', checkOut: '', total: '', paid: '', note: '', seller: '', guests: ''};
+  loadBookings();
 }
 
 async function handleDelete(id) {
-  if (confirm('Excluir esta reserva?')) {
-    await db.collection("bookings").doc(id).delete();
-    loadBookings();
-  }
+  if (confirm('Excluir esta reserva?')) {
+    await db.collection("bookings").doc(id).delete();
+    loadBookings();
+  }
 }
 
 function handleEdit(id) {
-  state.editingId = id;
-  render();
+  state.editingId = id;
+  render();
 }
 
 function handleCancelEdit() {
-  state.editingId = null;
-  loadBookings();
+  state.editingId = null;
+  loadBookings();
 }
 
 async function handleSaveEdit(id) {
-  const b = state.bookings.find(x => x.id === id);
-  
-  const newCheckIn = new Date(b.checkIn + 'T00:00:00');
-  const newCheckOut = new Date(b.checkOut + 'T00:00:00');
+  const b = state.bookings.find(x => x.id === id);
+  
+  const newCheckIn = new Date(b.checkIn + 'T00:00:00');
+  const newCheckOut = new Date(b.checkOut + 'T00:00:00');
 
-  const conflict = state.bookings.find(booking => {
-    if (booking.id === id) return false;
-    
-    const existingCheckIn = new Date(booking.checkIn + 'T00:00:00');
-    const existingCheckOut = new Date(booking.checkOut + 'T00:00:00');
-    return !(newCheckOut <= existingCheckIn || newCheckIn >= existingCheckOut);
-  });
+  const conflict = state.bookings.find(booking => {
+    if (booking.id === id) return false;
+    
+    const existingCheckIn = new Date(booking.checkIn + 'T00:00:00');
+    const existingCheckOut = new Date(booking.checkOut + 'T00:00:00');
+    return !(newCheckOut <= existingCheckIn || newCheckIn >= existingCheckOut);
+  });
 
-  if (conflict) {
-    alert(`Data indisponível! Já existe uma reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`);
-    return;
-  }
+  if (conflict) {
+    alert(`Data indisponível! Já existe uma reserva de ${conflict.name} entre ${fmtDate(conflict.checkIn)} e ${fmtDate(conflict.checkOut)}`);
+    return;
+  }
 
-  b.pending = b.total - b.paid;
-  await db.collection("bookings").doc(id).set(b);
-  state.editingId = null;
-  loadBookings();
+  b.pending = b.total - b.paid;
+  await db.collection("bookings").doc(id).set(b);
+  state.editingId = null;
+  loadBookings();
 }
 
 // Helpers
 function changeTab(t) {
-  state.activeTab = t;
-  render();
+  state.activeTab = t;
+  render();
 }
 
 function updateNewBooking(f, v) {
-  state.newBooking[f] = v;
+  state.newBooking[f] = v;
 }
 
 function updateBooking(id, f, v) {
-  const b = state.bookings.find(x => x.id === id);
-  if (f === 'name' || f === 'note' || f === 'checkIn' || f === 'checkOut' || f === 'seller') {
-    b[f] = v;
-  } else {
-    b[f] = +v || 0;
-  }
+  const b = state.bookings.find(x => x.id === id);
+  if (f === 'name' || f === 'note' || f === 'checkIn' || f === 'checkOut' || f === 'seller') {
+    b[f] = v;
+  } else {
+    b[f] = +v || 0;
+  }
 }
 
 function fmt(v) {
-  return `R$ ${Math.round(v).toLocaleString('pt-BR')}`;
+  return `R$ ${Math.round(v).toLocaleString('pt-BR')}`;
 }
 
 function fmtDate(d) {
-  return new Date(d + 'T00:00:00').toLocaleDateString('pt-BR');
+  return new Date(d + 'T00:00:00').toLocaleDateString('pt-BR');
 }
 
 function getEventStatus(checkInDate, checkOutDate) {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const checkIn = new Date(checkInDate + 'T00:00:00');
-  const checkOut = new Date(checkOutDate + 'T00:00:00');
-  
-  if (checkOut < today) {
-    return { status: 'Realizado', color: 'gray', icon: 'check-circle' };
-  } else if (checkIn <= today && checkOut >= today) {
-    return { status: 'Em andamento', color: 'blue', icon: 'play-circle' };
-  } else {
-    return { status: 'Agendado', color: 'green', icon: 'calendar-check' };
-  }
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const checkIn = new Date(checkInDate + 'T00:00:00');
+  const checkOut = new Date(checkOutDate + 'T00:00:00');
+  
+  if (checkOut < today) {
+    return { status: 'Realizado', color: 'gray', icon: 'check-circle' };
+  } else if (checkIn <= today && checkOut >= today) {
+    return { status: 'Em andamento', color: 'blue', icon: 'play-circle' };
+  } else {
+    return { status: 'Agendado', color: 'green', icon: 'calendar-check' };
+  }
 }
 
 // Render Bookings
 function renderBookingsTab() {
-  return `
-    <div class="form-container animate-fade-in">
-      <h2 class="form-title">
-        <i data-lucide="plus-circle" style="width: 24px; height: 24px;"></i>
-        Nova Reserva
-      </h2>
-      <div class="form-grid">
-        <div class="input-group">
-          <label class="input-label">Nome</label>
-          <input type="text" class="input" placeholder="Digite o nome" value="${state.newBooking.name}" onchange="updateNewBooking('name', this.value)" />
-        </div>
-        <div class="input-group">
-          <label class="input-label">Check-in</label>
-          <input type="date" class="input" value="${state.newBooking.checkIn}" onchange="updateNewBooking('checkIn', this.value)" />
-        </div>
-        <div class="input-group">
-          <label class="input-label">Check-out</label>
-          <input type="date" class="input" value="${state.newBooking.checkOut}" onchange="updateNewBooking('checkOut', this.value)" />
-        </div>
-        <div class="input-group">
-          <label class="input-label">Pessoas</label>
-          <input type="number" class="input" placeholder="0" value="${state.newBooking.guests}" onchange="updateNewBooking('guests', this.value)" />
-        </div>
-        <div class="input-group">
-          <label class="input-label">Valor Total</label>
-          <input type="number" class="input" placeholder="R$ 0,00" value="${state.newBooking.total}" onchange="updateNewBooking('total', this.value)" />
-        </div>
-      </div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-        <div class="input-group">
-          <label class="input-label">Valor Pago</label>
-          <input type="number" class="input" placeholder="R$ 0,00" value="${state.newBooking.paid}" onchange="updateNewBooking('paid', this.value)" />
-        </div>
-        <div class="input-group">
-          <label class="input-label">Vendedor</label>
-          <input type="text" class="input" placeholder="Quem vendeu?" value="${state.newBooking.seller}" onchange="updateNewBooking('seller', this.value)" />
-        </div>
-        <div class="input-group">
-          <label class="input-label">Observações</label>
-          <input type="text" class="input" placeholder="Opcional" value="${state.newBooking.note}" onchange="updateNewBooking('note', this.value)" />
-        </div>
-      </div>
-      <button class="btn" onclick="handleAdd()">
-        <i data-lucide="plus"></i>
-        Adicionar Reserva
-      </button>
-    </div>
+  return `
+    <div class="form-container animate-fade-in">
+      <h2 class="form-title">
+        <i data-lucide="plus-circle" style="width: 24px; height: 24px;"></i>
+        Nova Reserva
+      </h2>
+      <div class="form-grid">
+        <div class="input-group">
+          <label class="input-label">Nome</label>
+          <input type="text" class="input" placeholder="Digite o nome" value="${state.newBooking.name}" onchange="updateNewBooking('name', this.value)" />
+        </div>
+        <div class="input-group">
+          <label class="input-label">Check-in</label>
+          <input type="date" class="input" value="${state.newBooking.checkIn}" onchange="updateNewBooking('checkIn', this.value)" />
+        </div>
+        <div class="input-group">
+          <label class="input-label">Check-out</label>
+          <input type="date" class="input" value="${state.newBooking.checkOut}" onchange="updateNewBooking('checkOut', this.value)" />
+        </div>
+        <div class="input-group">
+          <label class="input-label">Pessoas</label>
+          <input type="number" class="input" placeholder="0" value="${state.newBooking.guests}" onchange="updateNewBooking('guests', this.value)" />
+        </div>
+        <div class="input-group">
+          <label class="input-label">Valor Total</label>
+          <input type="number" class="input" placeholder="R$ 0,00" value="${state.newBooking.total}" onchange="updateNewBooking('total', this.value)" />
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+        <div class="input-group">
+          <label class="input-label">Valor Pago</label>
+          <input type="number" class="input" placeholder="R$ 0,00" value="${state.newBooking.paid}" onchange="updateNewBooking('paid', this.value)" />
+          </div>
+        <div class="input-group">
+          <label class="input-label">Vendedor</label>
+          <input type="text" class="input" placeholder="Quem vendeu?" value="${state.newBooking.seller}" onchange="updateNewBooking('seller', this.value)" />
+        </div>
+        <div class="input-group">
+          <label class="input-label">Observações</label>
+          <input type="text" class="input" placeholder="Opcional" value="${state.newBooking.note}" onchange="updateNewBooking('note', this.value)" />
+        </div>
+      </div>
+      <button class="btn" onclick="handleAdd()">
+        <i data-lucide="plus"></i>
+        Adicionar Reserva
+      </button>
+    </div>
 
-    <div class="table-container animate-fade-in">
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Entrada</th>
-            <th>Saída</th>
-            <th>Pessoas</th>
-            <th>Total</th>
-            <th>Pago</th>
-            <th>Pendente</th>
-            <th>Status</th>
-            <th>Vendedor</th>
-            <th>Anotações</th>
-            <th style="text-align: center;">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${state.bookings.length === 0 ? `
-            <tr>
-              <td colspan="11" class="empty-state">
-                <i data-lucide="inbox" style="width: 48px; height: 48px; opacity: 0.3; margin-bottom: 12px;"></i>
-                <p>Nenhuma reserva cadastrada</p>
-              </td>
-            </tr>
-          ` : state.bookings.map(booking => {
-            const eventStatus = getEventStatus(booking.checkIn, booking.checkOut);
-            return `
-            <tr>
-              <td>
-                ${state.editingId === booking.id ? `
-                  <input type="text" class="input" value="${booking.name}" onchange="updateBooking('${booking.id}', 'name', this.value)" />
-                ` : `
-                  <span class="text-gray-100" style="font-weight: 600;">${booking.name}</span>
-                `}
-              </td>
-              <td class="text-gray-300">
-                ${state.editingId === booking.id ? `
-                  <input type="date" class="input" value="${booking.checkIn}" onchange="updateBooking('${booking.id}', 'checkIn', this.value)" />
-                ` : fmtDate(booking.checkIn)}
-              </td>
-              <td class="text-gray-300">
-                ${state.editingId === booking.id ? `
-                  <input type="date" class="input" value="${booking.checkOut}" onchange="updateBooking('${booking.id}', 'checkOut', this.value)" />
-                ` : fmtDate(booking.checkOut)}
-              </td>
-              <td class="text-gray-300">
-                ${state.editingId === booking.id ? `
-                  <input type="number" class="input" style="width: 70px;" value="${booking.guests || 0}" onchange="updateBooking('${booking.id}', 'guests', this.value)" />
-                ` : (booking.guests || 0)}
-              </td>
-              <td class="text-gray-300">
-                ${state.editingId === booking.id ? `
-                  <input type="number" class="input" style="width: 100px;" value="${booking.total}" onchange="updateBooking('${booking.id}', 'total', this.value)" />
-                ` : fmt(booking.total)}
-              </td>
-              <td class="text-green">
-                ${state.editingId === booking.id ? `
-                  <input type="number" class="input" style="width: 100px;" value="${booking.paid}" onchange="updateBooking('${booking.id}', 'paid', this.value)" />
-                ` : fmt(booking.paid)}
-              </td>
-              <td>
-                <span class="${booking.pending > 0 ? 'text-orange' : 'text-green'}">
-                  ${fmt(booking.pending)}
-                </span>
-              </td>
-              <td>
-                <span class="badge ${eventStatus.color}">
-                  <i data-lucide="${eventStatus.icon}" style="width: 14px; height: 14px;"></i>
-                  ${eventStatus.status}
-                </span>
-              </td>
-              <td class="text-gray-300">
-                ${state.editingId === booking.id ? `
-                  <input type="text" class="input" placeholder="Vendedor" value="${booking.seller || ''}" onchange="updateBooking('${booking.id}', 'seller', this.value)" />
-                ` : `<span class="text-gray-400">${booking.seller || '-'}</span>`}
-              </td>
-              <td class="text-gray-300">
-                ${state.editingId === booking.id ? `
-                  <input type="text" class="input" placeholder="Anotação" value="${booking.note || ''}" onchange="updateBooking('${booking.id}', 'note', this.value)" />
-                ` : `<span class="text-gray-400">${booking.note || '-'}</span>`}
-              </td>
-              <td>
-                <div class="actions">
-                  ${state.editingId === booking.id ? `
-                    <button class="icon-btn green" onclick="handleSaveEdit('${booking.id}')" title="Salvar">
-                      <i data-lucide="check"></i>
-                    </button>
-                    <button class="icon-btn gray" onclick="handleCancelEdit()" title="Cancelar">
-                      <i data-lucide="x"></i>
-                    </button>
-                  ` : `
-                    <button class="icon-btn blue" onclick="handleEdit('${booking.id}')" title="Editar">
-                      <i data-lucide="edit-2"></i>
-                    </button>
-                    <button class="icon-btn red" onclick="handleDelete('${booking.id}')" title="Excluir">
-                      <i data-lucide="trash-2"></i>
-                    </button>
-                  `}
-                </div>
-              </td>
-            </tr>
-            `;
-          }).join('')}
-        </tbody>
-      </table>
-    </div>
-  `;
+    <div class="table-container animate-fade-in">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Entrada</th>
+            <th>Saída</th>
+            <th>Pessoas</th>
+            <th>Total</th>
+            <th>Pago</th>
+            <th>Pendente</th>
+            <th>Status</th>
+            <th>Vendedor</th>
+            <th>Anotações</th>
+            <th style="text-align: center;">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${state.bookings.length === 0 ? `
+            <tr>
+              <td colspan="11" class="empty-state">
+                <i data-lucide="inbox" style="width: 48px; height: 48px; opacity: 0.3; margin-bottom: 12px;"></i>
+                <p>Nenhuma reserva cadastrada</p>
+              </td>
+            </tr>
+          ` : state.bookings.map(booking => {
+            const eventStatus = getEventStatus(booking.checkIn, booking.checkOut);
+            return `
+            <tr>
+              <td>
+                ${state.editingId === booking.id ? `
+                  <input type="text" class="input" value="${booking.name}" onchange="updateBooking('${booking.id}', 'name', this.value)" />
+                ` : `
+                  <span class="text-gray-100" style="font-weight: 600;">${booking.name}</span>
+                `}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="date" class="input" value="${booking.checkIn}" onchange="updateBooking('${booking.id}', 'checkIn', this.value)" />
+                ` : fmtDate(booking.checkIn)}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="date" class="input" value="${booking.checkOut}" onchange="updateBooking('${booking.id}', 'checkOut', this.value)" />
+                ` : fmtDate(booking.checkOut)}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="number" class="input" style="width: 70px;" value="${booking.guests || 0}" onchange="updateBooking('${booking.id}', 'guests', this.value)" />
+                ` : (booking.guests || 0)}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="number" class="input" style="width: 100px;" value="${booking.total}" onchange="updateBooking('${booking.id}', 'total', this.value)" />
+                ` : fmt(booking.total)}
+              </td>
+              <td class="text-green">
+                ${state.editingId === booking.id ? `
+                  <input type="number" class="input" style="width: 100px;" value="${booking.paid}" onchange="updateBooking('${booking.id}', 'paid', this.value)" />
+                ` : fmt(booking.paid)}
+              </td>
+              <td>
+                <span class="${booking.pending > 0 ? 'text-orange' : 'text-green'}">
+                  ${fmt(booking.pending)}
+                </span>
+              </td>
+              <td>
+                <span class="badge ${eventStatus.color}">
+                  <i data-lucide="${eventStatus.icon}" style="width: 14px; height: 14px;"></i>
+                  ${eventStatus.status}
+                </span>
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="text" class="input" placeholder="Vendedor" value="${booking.seller || ''}" onchange="updateBooking('${booking.id}', 'seller', this.value)" />
+                ` : `<span class="text-gray-400">${booking.seller || '-'}</span>`}
+              </td>
+              <td class="text-gray-300">
+                ${state.editingId === booking.id ? `
+                  <input type="text" class="input" placeholder="Anotação" value="${booking.note || ''}" onchange="updateBooking('${booking.id}', 'note', this.value)" />
+                ` : `<span class="text-gray-400">${booking.note || '-'}</span>`}
+              </td>
+              <td>
+                <div class="actions">
+                  ${state.editingId === booking.id ? `
+                    <button class="icon-btn green" onclick="handleSaveEdit('${booking.id}')" title="Salvar">
+                      <i data-lucide="check"></i>
+                    </button>
+                    <button class="icon-btn gray" onclick="handleCancelEdit()" title="Cancelar">
+                      <i data-lucide="x"></i>
+                    </button>
+                  ` : `
+                    <button class="icon-btn blue" onclick="handleEdit('${booking.id}')" title="Editar">
+                      <i data-lucide="edit-2"></i>
+                    </button>
+                    <button class="icon-btn red" onclick="handleDelete('${booking.id}')" title="Excluir">
+                      <i data-lucide="trash-2"></i>
+                    </button>
+                  `}
+                </div>
+              </td>
+            </tr>
+            `;
+          }).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
 }
 
 // Render Schedule
 function renderScheduleTab() {
-  if (state.bookings.length === 0) {
-    return `
-      <div class="empty-schedule animate-fade-in">
-        <i data-lucide="calendar-x" style="width: 64px; height: 64px;"></i>
-        <p style="font-size: 18px; font-weight: 600; margin-top: 16px;">Nenhum agendamento cadastrado ainda</p>
-      </div>
-    `;
-  }
+  if (state.bookings.length === 0) {
+    return `
+      <div class="empty-schedule animate-fade-in">
+        <i data-lucide="calendar-x" style="width: 64px; height: 64px;"></i>
+        <p style="font-size: 18px; font-weight: 600; margin-top: 16px;">Nenhum agendamento cadastrado ainda</p>
+      </div>
+    `;
+  }
 
-  const sortedBookings = [...state.bookings].sort((a, b) => {
-    const dateA = new Date(a.checkIn);
-    const dateB = new Date(b.checkIn);
-    return dateA - dateB;
-  });
+  const sortedBookings = [...state.bookings].sort((a, b) => {
+    const dateA = new Date(a.checkIn);
+    const dateB = new Date(b.checkIn);
+    return dateA - dateB;
+  });
 
-  return `
-    <h2 class="schedule-title animate-fade-in">
-      <i data-lucide="calendar" style="width: 32px; height: 32px;"></i>
-      Calendário de Agendamentos
-    </h2>
-    <div class="schedule-container">
-      ${sortedBookings.map((booking, index) => {
-        const checkIn = new Date(booking.checkIn + 'T00:00:00');
-        const checkOut = new Date(booking.checkOut + 'T00:00:00');
-        const days = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
-        const eventStatus = getEventStatus(booking.checkIn, booking.checkOut);
-        
-        return `
-          <div class="schedule-card animate-fade-in" style="animation-delay: ${index * 0.1}s;">
-            <div class="schedule-header">
-              <div class="schedule-content">
-                <h3 class="schedule-name">${booking.name}</h3>
-                <div class="schedule-grid">
-                  <div class="schedule-grid-item">
-                    <i data-lucide="log-in" style="width: 16px; height: 16px; color: #10b981;"></i>
-                    <span class="text-gray-400" style="font-size: 12px;">Check-in:</span>
-                    <span class="text-gray-300" style="font-weight: 600;">${fmtDate(booking.checkIn)}</span>
-                  </div>
-                  <div class="schedule-grid-item">
-                    <i data-lucide="log-out" style="width: 16px; height: 16px; color: #f59e0b;"></i>
-                    <span class="text-gray-400" style="font-size: 12px;">Check-out:</span>
-                    <span class="text-gray-300" style="font-weight: 600;">${fmtDate(booking.checkOut)}</span>
-                  </div>
-                  <div class="schedule-grid-item">
-                    <i data-lucide="clock" style="width: 16px; height: 16px; color: #6b7280;"></i>
-                    <span class="text-gray-400" style="font-size: 12px;">Período:</span>
-                    <span class="text-gray-300" style="font-weight: 600;">${days} ${days === 1 ? 'dia' : 'dias'}</span>
-                  </div>
-                  <div class="schedule-grid-item">
-                    <i data-lucide="users" style="width: 16px; height: 16px; color: #6b7280;"></i>
-                    <span class="text-gray-400" style="font-size: 12px;">Pessoas:</span>
-                    <span class="text-gray-300" style="font-weight: 600;">${booking.guests || 0}</span>
-                  </div>
-                  <div class="schedule-grid-item">
-                    <i data-lucide="${eventStatus.icon}" style="width: 16px; height: 16px;"></i>
-                    <span class="text-gray-400" style="font-size: 12px;">Status:</span>
-                    <span class="badge ${eventStatus.color}" style="padding: 4px 10px; font-size: 12px;">
-                      ${eventStatus.status}
-                    </span>
-                  </div>
-                  <div class="schedule-grid-item">
-                    <i data-lucide="credit-card" style="width: 16px; height: 16px;"></i>
-                    <span class="text-gray-400" style="font-size: 12px;">Pgto:</span>
-                    <span class="badge ${booking.pending > 0 ? 'orange' : 'green'}" style="padding: 4px 10px; font-size: 12px;">
-                      ${booking.pending > 0 ? 'Pendente' : 'Pago'}
-                    </span>
-                  </div>
-                </div>
-                ${booking.note ? `
-                  <div class="schedule-note">
-                    <strong style="color: #059669;">💭 Observação:</strong> ${booking.note}
-                  </div>
-                ` : ''}
-                ${booking.seller ? `
-                  <div class="schedule-note" style="border-left-color: #3b82f6;">
-                    <strong style="color: #2563eb;">👤 Vendedor:</strong> ${booking.seller}
-                  </div>
-                ` : ''}
-              </div>
-              <div class="schedule-price">
-                <div class="schedule-price-label">Total</div>
-                <div class="schedule-price-value">${fmt(booking.total)}</div>
-                ${booking.pending > 0 ? `
-                  <div class="schedule-pending">
-                    ⚠️ Falta: ${fmt(booking.pending)}
-                  </div>
-                ` : `
-                  <div style="font-size: 13px; color: #10b981; margin-top: 8px; font-weight: 600;">
-                    ✓ Pago
-                  </div>
-                `}
-              </div>
-            </div>
-          </div>
-        `;
-      }).join('')}
-    </div>
-  `;
+  return `
+    <h2 class="schedule-title animate-fade-in">
+      <i data-lucide="calendar" style="width: 32px; height: 32px;"></i>
+      Calendário de Agendamentos
+    </h2>
+    <div class="schedule-container">
+      ${sortedBookings.map((booking, index) => {
+        const checkIn = new Date(booking.checkIn + 'T00:00:00');
+        const checkOut = new Date(booking.checkOut + 'T00:00:00');
+        const days = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+        const eventStatus = getEventStatus(booking.checkIn, booking.checkOut);
+        
+        return `
+          <div class="schedule-card animate-fade-in" style="animation-delay: ${index * 0.1}s;">
+            <div class="schedule-header">
+              <div class="schedule-content">
+                <h3 class="schedule-name">${booking.name}</h3>
+                <div class="schedule-grid">
+                  <div class="schedule-grid-item">
+                    <i data-lucide="log-in" style="width: 16px; height: 16px; color: #10b981;"></i>
+                    <span class="text-gray-400" style="font-size: 12px;">Check-in:</span>
+                    <span class="text-gray-300" style="font-weight: 600;">${fmtDate(booking.checkIn)}</span>
+                  </div>
+                  <div class="schedule-grid-item">
+                    <i data-lucide="log-out" style="width: 16px; height: 16px; color: #f59e0b;"></i>
+                    <span class="text-gray-400" style="font-size: 12px;">Check-out:</span>
+                    <span class="text-gray-300" style="font-weight: 600;">${fmtDate(booking.checkOut)}</span>
+                  </div>
+                  <div class="schedule-grid-item">
+                    <i data-lucide="clock" style="width: 16px; height: 16px; color: #6b7280;"></i>
+                    <span class="text-gray-400" style="font-size: 12px;">Período:</span>
+                    <span class="text-gray-300" style="font-weight: 600;">${days} ${days === 1 ? 'dia' : 'dias'}</span>
+                  </div>
+                  <div class="schedule-grid-item">
+                    <i data-lucide="users" style="width: 16px; height: 16px; color: #6b7280;"></i>
+                    <span class="text-gray-400" style="font-size: 12px;">Pessoas:</span>
+                    <span class="text-gray-300" style="font-weight: 600;">${booking.guests || 0}</span>
+                  </div>
+                  <div class="schedule-grid-item">
+                    <i data-lucide="${eventStatus.icon}" style="width: 16px; height: 16px;"></i>
+                    <span class="text-gray-400" style="font-size: 12px;">Status:</span>
+                    <span class="badge ${eventStatus.color}" style="padding: 4px 10px; font-size: 12px;">
+                      ${eventStatus.status}
+                    </span>
+                  </div>
+                  <div class="schedule-grid-item">
+                    <i data-lucide="credit-card" style="width: 16px; height: 16px;"></i>
+                    <span class="text-gray-400" style="font-size: 12px;">Pgto:</span>
+                    <span class="badge ${booking.pending > 0 ? 'orange' : 'green'}" style="padding: 4px 10px; font-size: 12px;">
+                      ${booking.pending > 0 ? 'Pendente' : 'Pago'}
+                    </span>
+                  </div>
+                </div>
+                ${booking.note ? `
+                  <div class="schedule-note">
+                    <strong style="color: #059669;">💭 Observação:</strong> ${booking.note}
+                  </div>
+                ` : ''}
+                ${booking.seller ? `
+                  <div class="schedule-note" style="border-left-color: #3b82f6;">
+                    <strong style="color: #2563eb;">👤 Vendedor:</strong> ${booking.seller}
+                  </div>
+                ` : ''}
+              </div>
+              <div class="schedule-price">
+                <div class="schedule-price-label">Total</div>
+                <div class="schedule-price-value">${fmt(booking.total)}</div>
+                ${booking.pending > 0 ? `
+                  <div class="schedule-pending">
+                    ⚠️ Falta: ${fmt(booking.pending)}
+                  </div>
+                ` : `
+                  <div style="font-size: 13px; color: #10b981; margin-top: 8px; font-weight: 600;">
+                    ✓ Pago
+                  </div>
+                `}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `;
 }
 
 // Render
 function render() {
-  document.getElementById('root').innerHTML = `
-    <div class="container">
-      <div class="card">
-        <div class="header">
-          <div class="header-icon">
-            <i data-lucide="sparkles" style="width: 32px; height: 32px; color: white;"></i>
-          </div>
-          <div class="header-content">
-            <h1>Sítio Escola de Cura</h1>
-            <p>Sistema de Hospedagens</p>
-          </div>
-        </div>
-        <div class="tabs">
-          <button class="tab ${state.activeTab === 'bookings' ? 'active' : ''}" onclick="changeTab('bookings')">
-            <i data-lucide="home"></i>
-            Hospedagens
-          </button>
-          <button class="tab ${state.activeTab === 'schedule' ? 'active' : ''}" onclick="changeTab('schedule')">
-            <i data-lucide="calendar"></i>
-            Agendamentos
-          </button>
-        </div>
-        ${state.activeTab === 'bookings' ? renderBookingsTab() : renderScheduleTab()}
-      </div>
-    </div>
-  `;
-  lucide.createIcons();
+  document.getElementById('root').innerHTML = `
+    <div class="container">
+      <div class="card">
+        <div class="header">
+          <div class="header-icon">
+            <i data-lucide="sparkles" style="width: 32px; height: 32px; color: white;"></i>
+          </div>
+          <div class="header-content">
+            <h1>Sítio Escola de Cura</h1>
+            <p>Sistema de Hospedagens</p>
+          </div>
+        </div>
+        <div class="tabs">
+          <button class="tab ${state.activeTab === 'bookings' ? 'active' : ''}" onclick="changeTab('bookings')">
+            <i data-lucide="home"></i>
+            Hospedagens
+          </button>
+          <button class="tab ${state.activeTab === 'schedule' ? 'active' : ''}" onclick="changeTab('schedule')">
+            <i data-lucide="calendar"></i>
+            Agendamentos
+          </button>
+        </div>
+        ${state.activeTab === 'bookings' ? renderBookingsTab() : renderScheduleTab()}
+      </div>
+    </div>
+  `;
+  lucide.createIcons();
 }
 
 document.addEventListener('DOMContentLoaded', loadBookings);
